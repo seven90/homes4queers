@@ -17,7 +17,7 @@
       <%= f.fields_for :image do |img| %>
         <%= render 'image_fields', f: img %>
       <% end %>
-      
+        <%# link_to_add_association "Add Another Photo", f, :image %>
     </div>
     <div class="action">
       <%= f.submit "Submit Listing" %>
