@@ -1,15 +1,7 @@
 <%= form_for @user do |f| %>
   <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %><br>
-  </div>
-  <div class="field">
     <%= f.label :email %>
     <%= f.text_field :email %><br>
-  </div>
-  <div class="field">
-    <%= f.label :about_me, 'About Me!' %>
-    <%= f.text_area :about_me %><br>
   </div>
   <div class="field">
     <%= f.label :password %>
@@ -18,6 +10,14 @@
   <div class="field">
     <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation %><br>
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %><br>
+  </div>
+  <div class="field">
+    <%= f.label :about_me, 'About Me!' %>
+    <%= f.text_area :about_me %><br>
+  </div>
   </div>
     <%= f.fields_for :image do |img| %>
       <%= img.file_field :image %><br><br>
