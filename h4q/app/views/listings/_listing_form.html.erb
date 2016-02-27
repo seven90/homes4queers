@@ -14,10 +14,12 @@
       <%= f.text_field :location %>
     </div>
     <div class="field">
-      
-
+      <%= f.fields_for :image do |img| %>
+        <%= img.file_field :image %>
+      <% end %>
     </div>
     <div class="action">
       <%= f.submit "Submit Listing" %>
     </div>
+  <% end %>
 </div>
