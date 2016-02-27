@@ -11,9 +11,63 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20160227194932) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "comments", force: :cascade do |t|
+    t.text     "body"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "comments", ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id", using: :btree
+
+  create_table "images", force: :cascade do |t|
+    t.string   "photo"
+    t.integer  "imageable_id"
+    t.string   "imageable_type"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "images", ["imageable_type", "imageable_id"], name: "index_images_on_imageable_type_and_imageable_id", using: :btree
+
+  create_table "listings", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "location"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "listings", ["user_id"], name: "index_listings_on_user_id", using: :btree
+
+  create_table "tags", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "tags", ["taggable_type", "taggable_id"], name: "index_tags_on_taggable_type_and_taggable_id", using: :btree
+
+  create_table "users", force: :cascade do |t|
+    t.string   "name"
+    t.text     "about_me"
+    t.string   "email",            null: false
+    t.string   "crypted_password"
+    t.string   "salt"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+
+  add_foreign_key "listings", "users"
 end
