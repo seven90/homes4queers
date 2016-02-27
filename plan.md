@@ -33,24 +33,24 @@ My site can:
 
 1st
 CRUD
--have users-sorcery
--have listings
--sign up/login
--show all listings
+- have users-sorcery
+- have listings
+- sign up/login
+- show all listings
 (search)
--show page users
--add comments to listings and profiles
+- show page users
+- add comments to listings and profiles
 by wednesday the 2nd
 
 2nd Iteration
 
--include photos on listings/user profile
--flesh out profiles
+- include photos on listings/user profile
+- flesh out profiles
 - figure out how to preset gender options
--contact users (mail to)
--search w/filters /search through profiles
--map feature
--ability to flag inappropriate content
+- contact users (mail to)
+- search w/filters /search through profiles
+- map feature
+- ability to flag inappropriate content
 
 by Friday 4th
 
