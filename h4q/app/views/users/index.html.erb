@@ -1,2 +1,11 @@
-<h1>Users#index</h1>
-<p>Find me in app/views/users/index.html.erb</p>
+<h1>Everyone</h1>
+<% if @users.any? %>
+  <% @users.each do |usr| %>
+  <div class="user">
+    <%# user.photo %>
+    <img src ='https://pbs.twimg.com/profile_images/588800315991973889/l61scjho.jpg'><br>
+    <%= link_to usr.name, user_path(usr) %>
+
+  </div>
+  <% end %>
+<% end %>
