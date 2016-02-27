@@ -1,2 +1,10 @@
-<h1>Listings#index</h1>
-<p>Find me in app/views/listings/index.html.erb</p>
+<h1>All Listings</h1>
+<% if @listings.any? %>
+    <%# listing.photo %>
+    <% @listings.each do |listing| %>
+    <div class="listing">
+    <img src ='https://pbs.twimg.com/profile_images/588800315991973889/l61scjho.jpg'><br>
+    <%= link_to listing.name, listing_path(listing) %>
+  </div>
+    <% end %>
+<% end %>
