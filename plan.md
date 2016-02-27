@@ -56,31 +56,31 @@ by Friday 4th
 
 
 3rd Iteration
--tag system for categories/keywords on profiles and listings
--be able to upload photos from different sources
--chat/DM
--failsafes against bots
--sign up code
+- tag system for categories/keywords on profiles and listings
+- be able to upload photos from different sources
+- chat/DM
+- failsafes against bots
+- sign up code
 * admin gems
--confirmation emails
--password reset
+- confirmation emails
+- password reset
 * sorcery
--suspend listings/profiles >>both users and admins
--random profile!!!
+- suspend listings/profiles >>both users and admins
+- random profile!!!
 
 evaluate by friday 4th
 
 
 4th
--styles
--debugging
--site hosting (amazon? digital ocean)
--error reporting
--ads
+- styles
+- debugging
+- site hosting (amazon? digital ocean)
+- error reporting
+- ads
 by some time
 
 
 5th
--emergency/airbnb style renting/ couch surfing
--OK cupid type algo
+- emergency/airbnb style renting/ couch surfing
+- OK cupid type algo
 hopefully
