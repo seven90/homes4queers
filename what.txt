@@ -4,4 +4,5 @@
 - strong params in users --what do we put there?
 - need images controller? or just .build
 - f: image no method error
+- why is logout a post with sorcery?
 - can Natalie just live with me until this is done?
