@@ -13,11 +13,11 @@
   </div>
   <div class="field">
     <%= f.label :password %>
-    <%= f.text_area :password %><br>
+    <%= f.password_field :password %><br>
   </div>
   <div class="field">
     <%= f.label :password_confirmation %>
-    <%= f.text_area :password_confirmation %><br>
+    <%= f.password_field :password_confirmation %><br>
   </div>
     <%= f.fields_for :image do |img| %>
       <%= img.file_field :image %><br><br>
