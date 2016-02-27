@@ -1,32 +1,32 @@
 My site can:
 
-#-list ads for housing
-#-sign up
-#-contact users
-#-search ads
-#-create user profiles with needs
+-list ads for housing
+-sign up
+-contact users
+-search ads
+-create user profiles with needs
 
-#-map feature 
-#-should be able to search just for roomates/search through profiles
-#-chat feature
-#-emergency services
-#-short term rentals
-#-OK cupid type algo
-#-failsafes against bots
-#-ability to flag inappropriate content
-#-be easy to navigate
--community forum for other stuffsz
+-map feature
+-should be able to search just for roomates/search through profiles
+-chat feature
+-emergency services
+-short term rentals
+-OK cupid type algo
+-failsafes against bots
+-ability to flag inappropriate content
+-be easy to navigate
+--community forum for other stuffsz
 
-#-include photos on listings/user profile
+include photos on listings/user profile
 -have a random match system
-#-sign up code
-#-confirmation emails
-#-password reset
-#-admin controls
-#-admins can block users
+-sign up code
+-confirmation emails
+-password reset
+-admin controls
+-admins can block users
 
-#-suspend and delete profiles/listings
--furniture listings
+-suspend and delete profiles/listings
+--furniture listings
 
 
 ##############
@@ -46,10 +46,10 @@ by wednesday the 2nd
 
 -include photos on listings/user profile
 -flesh out profiles
->> figure out gender stuff
+- figure out how to preset gender options
 -contact users (mail to)
 -search w/filters /search through profiles
--map feature 
+-map feature
 -ability to flag inappropriate content
 
 by Friday 4th
@@ -60,7 +60,7 @@ by Friday 4th
 -be able to upload photos from different sources
 -chat/DM
 -failsafes against bots
--sign up code 
+-sign up code
 * admin gems
 -confirmation emails
 -password reset
