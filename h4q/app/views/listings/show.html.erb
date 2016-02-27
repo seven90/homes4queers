@@ -1,2 +1,8 @@
-<h1>Listings#show</h1>
-<p>Find me in app/views/listings/show.html.erb</p>
+<h1>Listing <%= @listing.id %></h1>
+<div class="info">
+  <%# @lisitng.photo %>
+  <%= @listing.name %><br>
+</div>
+<div class="about_me">
+  <%= @listing.description %>
+</div>
