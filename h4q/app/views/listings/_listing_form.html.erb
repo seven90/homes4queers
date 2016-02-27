@@ -15,8 +15,9 @@
     </div>
     <div class="field">
       <%= f.fields_for :image do |img| %>
-        <%= img.file_field :image %>
+        <%= render 'image_fields', f: img %>
       <% end %>
+      
     </div>
     <div class="action">
       <%= f.submit "Submit Listing" %>
