@@ -19,7 +19,7 @@ class ListingsController < ApplicationController
     @listing = Listing.new(listing_params)
 
     if @listing.save
-      redirect_back_or_to listings_path(@listing), notice: 'Successfully created a listing!'
+      redirect_back_or_to listing_path(@listing), notice: 'Successfully created a listing!'
     else
       render :new
     end
