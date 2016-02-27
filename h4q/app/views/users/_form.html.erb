@@ -1,6 +1,12 @@
 <%= form_for @user do |f| %>
-<div class="field">
+  <div class="field">
 
-</div>
+  </div>
 
+
+  <%= f.fields_for :image do |img| %>
+    <%= img.file_field :image %>
+  <% end %>
+
+  <%= f.submit %>
 <% end %>

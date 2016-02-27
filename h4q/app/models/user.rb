@@ -5,5 +5,5 @@ class User < ActiveRecord::Base
   has_many :comments, through: :listings
   has_many :tags, as: :taggable
   has_many :images, as: :imageable
-
+  attr_accessor :images
 end
