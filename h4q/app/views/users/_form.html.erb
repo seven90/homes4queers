@@ -18,10 +18,11 @@
     <%= f.label :about_me, 'About Me!' %>
     <%= f.text_area :about_me %><br>
   </div>
+  <div class="field">
+    <%= f.file_field :avatar %><br>
   </div>
-    <%= f.file_field :avatar %><br><br>
+  <div class="action">
+   <%= f.submit %><br>
+  </div>
 
-
-
-  <%= f.submit %><br>
   <% end %>
