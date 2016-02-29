@@ -4,8 +4,7 @@ class User < ActiveRecord::Base
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :comments, through: :listings, dependent: :destroy
   has_many :tags, as: :taggable
-  has_many :images, as: :imageable, dependent: :destroy
-  attr_accessor :images
+  mount_uploader :image, ImageUploader
 
   validates :password, length: { minimum: 6}, on: :create
   validates :password, confirmation: true, on: :create

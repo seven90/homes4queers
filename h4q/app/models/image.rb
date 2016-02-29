@@ -1,4 +1,4 @@
 class Image < ActiveRecord::Base
-  belongs_to :imageable, polymorphic: true
-  mount_uploader :image, ImageUploader
+  belongs_to :listing
+  has_one :user, through: :listing
 end
