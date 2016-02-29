@@ -6,10 +6,9 @@ def show
 end
 
 def create
-  @listing = Listing.find(params[:listing_id])
+  @commentable = find_commentable
 
-  @comment = @listing.comments.build(comment_params)
-  @user_comment = @user.comments.build(comment_params)
+  @comment = @commentble.comments.build(comment_params)
 
   @comment.user = current_user
 
