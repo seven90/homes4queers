@@ -2,10 +2,12 @@ class CommentsController < ApplicationController
 before_action :ensure_logged_in, only: [:create, :destroy]
 
 def show
-    @comment = Comment.find(params[:id])
+  @comment = Comment.find(params[:id])
 end
 
 def create
+  @listing = Listing.find(params[:listing_id])
+
   @comment = @listing.comments.build(comment_params)
   @user_comment = @user.comments.build(comment_params)
 
@@ -27,4 +29,14 @@ private
 def comment_params
   params.require(:comment).permit(:body, :commentable_id, :commentable_type)
 end
+
+def find_commentable
+  params.each do |name, value|
+    if name =~ /(.+)_id$/
+      return $1.classify.constantize.find(value)
+    end
+  end
+end
+
+
 end
