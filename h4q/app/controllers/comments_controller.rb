@@ -15,7 +15,7 @@ end
     @commentable = find_commentable
 
     @comment = @commentable.comments.build(comment_params)
-    @commentable.user = current_user
+    @comment.user = current_user
 
     if @comment.save
       redirect_to listings_path, notice: 'Comment successfully submitted'
