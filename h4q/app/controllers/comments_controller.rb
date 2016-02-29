@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-before_action :ensure_logged_in, only: [:create, :destroy]
+before_action :require_login, only: [:create, :destroy]
 
   def show
     @comment = Comment.find(params[:id])
