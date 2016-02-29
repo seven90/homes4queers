@@ -10,6 +10,7 @@ class ListingsController < ApplicationController
   def show
     @commentable = Listing.find(params[:id])
     @listing = Listing.find(params[:id])
+    
   end
 
   def edit
