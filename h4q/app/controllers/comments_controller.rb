@@ -1,5 +1,10 @@
 class CommentsController < ApplicationController
-before_action :ensure_logged_in, only: [:create, :destroy]
+# before_action :ensure_logged_in, only: [:create, :destroy]
+
+def index
+  @commentable = find_commentable
+  @comments = @commentable.comments
+end
 
 def show
   @comment = Comment.find(params[:id])
@@ -8,14 +13,15 @@ end
 def create
   @commentable = find_commentable
 
-  @comment = @commentble.comments.build(comment_params)
+  @comment = @commentable.comments.build(comment_params)
 
-  @comment.user = current_user
+  # @comment.user = current_user
 
   if @comment.save
-    redirect_to listings_path, notice: 'Comment successfully submitted'
+    flash[:notice] = 'Comment successfully submitted'
+    redirect_to
   else
-    render listing_path
+    render :new
   end
 end
 
