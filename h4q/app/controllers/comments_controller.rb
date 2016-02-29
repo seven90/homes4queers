@@ -14,7 +14,7 @@ end
   def create
     @commentable = find_commentable
 
-    @comment = @commentble.comments.build(comment_params)
+    @comment = @commentable.comments.build(comment_params)
     @comment.user = current_user
 
     if @comment.save
