@@ -1,0 +1,8 @@
+<%= form_for [@commentable, Comment.new] do |f| %>
+  <div class="field">
+    <%= f.label :body %>
+    <%= f.text_field :body %><br>
+  </div>
+
+  <%= f.submit "Add Comment" %><br>
+  <% end %>
