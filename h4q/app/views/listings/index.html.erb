@@ -1,4 +1,8 @@
 <h1>All Listings</h1>
+<div class="nav">
+  <%= link_to 'Add a New Listing', new_listing_path %><br>
+  <br>
+</div>
 <% if @listings.any? %>
     <%# listing.photo %>
     <% @listings.each do |listing| %>
