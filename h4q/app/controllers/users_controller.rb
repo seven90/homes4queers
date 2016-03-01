@@ -45,6 +45,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
+    #image is nested in a hash
     params.require(:user).permit(:name, :email, :password, :password_confirmation, :about_me, :avatar)
   end
 end
