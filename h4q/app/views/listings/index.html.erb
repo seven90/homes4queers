@@ -3,11 +3,16 @@
   <%= link_to 'Add a New Listing', new_listing_path %><br>
   <br>
 </div>
-<% if @listings.any? %>
-    <%# listing.photo %>
-    <% @listings.each do |listing| %>
-    <div class="listing">
+
+<div class="searchbar">
+  <%= form_tag listings_path, method: :get, authentification: false, id: 'search-form' do %>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search" %>
+  <% end %>
+</div>
+
+<% @listings.each do |listing| %>
+  <div class="listing">
     <%= link_to listing.name, listing_path(listing) %>
   </div>
-    <% end %>
 <% end %>
