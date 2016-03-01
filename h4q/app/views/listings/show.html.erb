@@ -16,10 +16,10 @@
 </div>
 <hr>
 <% @listing.comments.each do |c| %>
-<div class="show comment">
-  <%= c.user.name %> says:  <br>
-  <%= c.body %><br>
-  <%= c.created_at.to_formatted_s(:long) %>
-  <hr>
-</div>
+  <div class="show comment">
+    <b><%= c.user.name %> says: </b><br>
+    <%= c.body %><br>
+    <%= c.created_at.to_formatted_s(:long) %>
+    <hr>
+  </div>
 <% end %>

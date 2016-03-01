@@ -2,8 +2,8 @@ class CommentsController < ApplicationController
   before_action :require_login, only: [:create, :destroy]
 
 def index
-  @commentable = find_commentable
-  @comments = @commentable.comments
+  # @commentable = find_commentable
+  # @comments = @commentable.comments
 end
 
   def show
@@ -12,15 +12,14 @@ end
 
 
   def create
-    @commentable = find_commentable
 
-    @comment = @commentable.comments.build(comment_params)
+    @comment = Comment.new(comment_params)
     @comment.user = current_user
 
     if @comment.save
-      redirect_to :back, notice: 'Comment successfully submitted'
+      redirect_to :back
     else
-      render listing_path
+      render :new
     end
   end
 
@@ -34,13 +33,4 @@ private
   def comment_params
     params.require(:comment).permit(:body, :commentable_id, :commentable_type)
   end
-
-  def find_commentable
-    params.each do |name, value|
-      if name =~ /(.+)_id$/
-        return $1.classify.constantize.find(value)
-      end
-    end
-  end
-
 end

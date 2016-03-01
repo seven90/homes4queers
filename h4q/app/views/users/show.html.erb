@@ -13,11 +13,11 @@
   <%= render :partial => 'comments/comment_form' %>
 </div>
 <hr>
-<% @user.comments.each do |p| %>
-<div class="show comment">
-  <%= p.user.name %> says:  <br>
-  <%= p.body %><br>
-  <%= p.created_at.to_formatted_s(:long) %>
-  <hr>
-</div>
+<% @user.user_comments.each do |p| %>
+  <div class="show comment">
+    <b><%= p.user.name %> says:  </b><br>
+    <%= p.body %><br>
+    <%= p.created_at.to_formatted_s(:long) %>
+    <hr>
+  </div>
 <% end %>
