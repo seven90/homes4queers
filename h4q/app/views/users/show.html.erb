@@ -1,9 +1,23 @@
 <h1>Profile for <%= @user.name %></h1>
 <div class="info">
-  <%# @user.photo %>
   <%= @user.name %><br>
 </div>
 <div class="about_me">
   <%= @user.about_me %>
 </div>
 <%= image_tag @user.avatar %>
+
+<hr>
+<h4>User Comments</h4>
+<div class="new comment">
+  <%= render :partial => 'comments/comment_form' %>
+</div>
+<hr>
+<% @user.user_comments.each do |p| %>
+  <div class="show comment">
+    <b><%= p.user.name %> says:  </b><br>
+    <%= p.body %><br>
+    <%= p.created_at.to_formatted_s(:long) %>
+    <hr>
+  </div>
+<% end %>

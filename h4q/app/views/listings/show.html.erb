@@ -1,6 +1,6 @@
 <h1>Listing <%= @listing.id %></h1>
 <div class="info">
-  <%# @lisitng.photo %>
+
   <%= @listing.name %><br>
 </div>
 <div class="about_me">
@@ -14,8 +14,10 @@
 </div>
 <hr>
 <% @listing.comments.each do |c| %>
-<div class="show comment">
-  <%= c.user.name %> says: </p>
-  <%= c.body %>
-</div>
+  <div class="show comment">
+    <b><%= c.user.name %> says: </b><br>
+    <%= c.body %><br>
+    <%= c.created_at.to_formatted_s(:long) %>
+    <hr>
+  </div>
 <% end %>
