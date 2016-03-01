@@ -18,7 +18,7 @@ end
     @comment.user = current_user
 
     if @comment.save
-      redirect_to listings_path, notice: 'Comment successfully submitted'
+      redirect_to :back, notice: 'Comment successfully submitted'
     else
       render listing_path
     end
