@@ -3,11 +3,14 @@
   <%= @user.name %><br>
 </div>
 <div class="about_me">
-  <%= @user.about_me %>
+  <%= @user.about_me %><br>
 </div>
-<%= link_to image_url @user.avatar do %>
-  <%= image_tag @user.avatar.thumb%>
-<% end %>
+<div class="pic">
+  <%= link_to image_url @user.avatar do %>
+  <%= image_tag @user.avatar.thumb, class:"profile_pic" %><br>
+  <% end %>
+</div>
+
 <hr>
 <h4>User Comments</h4>
 <div class="new comment">
