@@ -10,7 +10,7 @@ class ListingsController < ApplicationController
   def show
     @commentable = Listing.find(params[:id])
     @listing = Listing.find(params[:id])
-    
+
   end
 
   def edit
@@ -47,7 +47,7 @@ class ListingsController < ApplicationController
   private
 
   def listing_params
-    params.require(:listing).permit(:name, :description, :location, :user_id)
+    params.require(:listing).permit(:name, :description, :location, :user_id, images_attributes: [:photo])
   end
 
 end
