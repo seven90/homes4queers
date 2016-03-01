@@ -5,8 +5,9 @@
 <div class="about_me">
   <%= @user.about_me %>
 </div>
-<%= image_tag @user.avatar.thumb %>
-
+<%= link_to image_url @user.avatar do %>
+  <%= image_tag @user.avatar.thumb%>
+<% end %>
 <hr>
 <h4>User Comments</h4>
 <div class="new comment">
