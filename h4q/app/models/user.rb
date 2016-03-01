@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
   authenticates_with_sorcery!
   has_many :listings, dependent: :destroy
-  has_many :comments, as: :commentable, dependent: :destroy
-  has_many :comments, through: :listings, dependent: :destroy
+  has_many :user_comments, as: :commentable, class_name:"Comment", dependent: :destroy
+  has_many :listing_comments, through: :listings, source:"comments", dependent: :destroy
   has_many :tags, as: :taggable
   mount_uploader :avatar, ImageUploader
 
