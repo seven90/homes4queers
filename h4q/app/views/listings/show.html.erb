@@ -5,7 +5,7 @@
 <h1><%= @listing.name %></h1>
 <div class="info">
   <% @listing.images.each do |p|%>
-    <%= image_tag p.photo %>
+    <%= image_tag p.photo %><br>
   <% end %>
   <%= @listing.name %><br>
 </div>
