@@ -9,6 +9,13 @@
 
 <hr>
 <h4>User Comments</h4>
-<div class="comment">
+<div class="new comment">
   <%= render :partial => 'comments/comment_form' %>
 </div>
+<hr>
+<% @listing.comments.each do |c| %>
+<div class="show comment">
+  <%= c.user.name %> says: </p>
+  <%= c.body %>
+</div>
+<% end %>
