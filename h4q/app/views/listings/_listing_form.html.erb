@@ -14,9 +14,11 @@
       <%= f.text_field :location %>
     </div>
     <div class="field">
-      <%= f.fields_for :image do |img| %>
-        <%= render 'image_fields', f: img %>
-      <% end %>
+      <%= f.file_field :photo %>
+
+      <%#= f.fields_for :photo do |img| %>
+        <%#= render 'image_fields', f: img %>
+      <%# end %>
         <%# link_to_add_association "Add Another Photo", f, :image %>
     </div>
     <div class="action">
