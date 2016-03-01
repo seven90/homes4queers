@@ -1,6 +1,8 @@
-<h1>Listing <%= @listing.id %></h1>
+<h1><%= @listing.name %></h1>
 <div class="info">
-  <%# @lisitng.photo %>
+  <% @listing.images.each do |p|%>
+    <%= image_tag p.photo %>
+  <% end %>
   <%= @listing.name %><br>
 </div>
 <div class="about_me">
