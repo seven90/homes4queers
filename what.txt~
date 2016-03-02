@@ -1,7 +1,7 @@
-- salting emails in database
-- calling polymorphic stuff in views
-- attr_accessor? in users
-- strong params in users --what do we put there?
+- /salting emails in database
+- /calling polymorphic stuff in views
+- /attr_accessor? in users
+- /strong params in users --what do we put there?
 - need images controller? or just .build
 - f: image no method error
 - why is logout a post with sorcery?

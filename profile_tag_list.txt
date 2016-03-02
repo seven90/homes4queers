@@ -9,7 +9,6 @@ gender identifiers:
 male female non-binary genderqueer
 transgender transman transwoman cisgender intersex agender
 
-
 racial identifiers:
 POC, Black, White, Latino,  Asian, Afro-Caribbean, African American
 Hispanic, East Asian, South Asian, Indian
@@ -22,6 +21,7 @@ allergies / other
 living requirment
 dietary restrictions
 vegan / vegetarian /
+
 petowner?
   cat / dog / bird / rabbit / fish / other
     number total
