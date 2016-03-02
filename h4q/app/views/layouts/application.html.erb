@@ -1,32 +1,22 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>H4q</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-
-<div class="user_nav">
-  <% if current_user %>
-    <%= link_to 'Logout', :logout, method: :post %>
-    <%= link_to 'Add a listing', new_listing_path  %>
-  <% else %>
-    <%= link_to 'Register', new_user_path %>
-    <%= link_to 'Login', :login %>
-  <% end %>
-</div>
-<div>
-   <p id="notice"><%= flash[:notice] %></p>
-   <p id="alert"><%= flash[:alert] %></p>
- </div>
- <div class="nav">
-   <%= link_to 'Home', :root %>
-   <%= link_to 'Users', users_path %>
- </div>
-
-<%= yield %>
-
-</body>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? yield(:title) : "H4q" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "H4q" %>">
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%# Modernizr is required for Zurb Foundation %>
+    <%= javascript_include_tag 'vendor/modernizr' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <header>
+      <%= render 'layouts/navigation' %>
+    </header>
+    <main role="main">
+       <%= render 'layouts/messages' %>
+       <%= yield %>
+    </main>
+  </body>
 </html>

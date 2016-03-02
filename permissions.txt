@@ -18,6 +18,8 @@ password
 picture
 about me
 
+tags (check all)
+
 y/n/don't care + expand fields:
 pets
 allergies
