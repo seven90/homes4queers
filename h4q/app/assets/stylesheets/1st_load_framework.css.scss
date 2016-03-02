@@ -38,6 +38,8 @@
   }
 // apply styles to HTML elements
 // to make views framework-neutral
+
+
 main {
   @include twelve-columns;
   background-color: #eee;
