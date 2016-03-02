@@ -1,0 +1,20 @@
+tags (check all that apply)
+
+identity:
+lesbian gay bisexual queer questioning two-spirited pansexual
+ally demisexual asexual heterosexual skoliosexual
+male female non-binary genderqueer
+transgender transman transwoman cisgender intersex agender
+polyamorous
+
+living requirment
+petowner?
+  cat / dog / bird / rabbit / fish / other
+    number total
+can live with pets
+  type
+smoker non-smoker
+
+accessibility
+  mobility / hearing impaired / visually impaired /
+  allergies / other
