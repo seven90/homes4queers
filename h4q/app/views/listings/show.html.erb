@@ -1,11 +1,10 @@
 <div class="nav">
   <br>
-  <%= link_to 'Add a New Listing', new_listing_path %><br>
 </div>
 <h1><%= @listing.name %></h1>
 <div class="info">
   <% @listing.images.each do |p|%>
-    <%= image_tag p.photo %><br>
+    <%= image_tag p.photo, alt: "listing picture"%><br>
   <% end %>
   <%= @listing.name %><br>
 </div>
