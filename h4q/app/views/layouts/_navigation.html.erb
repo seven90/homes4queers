@@ -1,12 +1,23 @@
 <%# navigation styled for Zurb Foundation 5 %>
 <nav class="top-bar" data-topbar>
-  <ul class="title-area">
+  <ul class="title-area inline-list">
     <li class="name"><%= link_to 'Home', root_path %></li>
-    <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+    <% if current_user %>
+    <li class="name"><%= link_to 'Logged in as' current_user.name, current_user %></li>
+    <li class="name"><%= link_to 'Logout', :logout, method: :post %></li>
+    <% else %>
+    <li class="name"><%= link_to 'Register', new_user_path %></li>
+    <li class="name"><%= link_to 'Login', :login %></li>
+    <% end %>
   </ul>
   <div class="top-bar-section">
-    <ul>
-      <%= render 'layouts/navigation_links' %>
+    <ul class="right">
+      <li class="has-dropdown">
+        <a href="#">Menu</a>
+        <ul class="dropdown">
+          <%= render 'layouts/navigation_links' %>
+        </ul>
+      </li>
     </ul>
   </div>
 </nav>
