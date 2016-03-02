@@ -1,5 +1,17 @@
 element attributes
 
+price
+# of bedrooms
+basement yn?
+hydro yn
+utilities yn
+pets
+smoking
+420 YN
+accessibility features
+features
+laundry dishwasher tub
+
 
 - can look up ads by neighbourhood
 - list accessibility needs on user side
