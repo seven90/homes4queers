@@ -3,7 +3,7 @@
   <ul class="title-area inline-list">
     <li class="name"><%= link_to 'Home', root_path %></li>
     <% if current_user %>
-    <li class="name"><%= link_to 'Logged in as' current_user.name, current_user %></li>
+    <li class="name"><%= link_to 'Logged in as ' + current_user.name, current_user %></li>
     <li class="name"><%= link_to 'Logout', :logout, method: :post %></li>
     <% else %>
     <li class="name"><%= link_to 'Register', new_user_path %></li>
