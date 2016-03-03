@@ -13,15 +13,4 @@
 
 <hr>
 <h4>User Comments</h4>
-<div class="new comment">
-  <%= render :partial => 'comments/comment_form' %>
-</div>
-<hr>
-<% @user.user_comments.each do |p| %>
-  <div class="show comment">
-    <b><%= p.user.name %> says:  </b><br>
-    <%= p.body %><br>
-    <%= p.created_at.to_formatted_s(:long) %>
-    <hr>
-  </div>
-<% end %>
+<%= render 'comments' %>

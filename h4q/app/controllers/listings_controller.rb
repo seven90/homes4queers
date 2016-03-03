@@ -2,6 +2,7 @@ class ListingsController < ApplicationController
   def index
     if params[:search]
       @listings = Listing.search(params[:search]).order("created_at DESC")
+      # @listings = Listing.near(params[:search])
     else
      @listings = Listing.order("created_at DESC")
     end
