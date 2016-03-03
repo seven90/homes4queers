@@ -14,8 +14,10 @@
 <div class="nearby">
   <h2>Nearby Listings</h2>
   <% @nearby_listings.each do |list| %>
+    <%= link_to listing_path(list) do %>
     <br><strong><%= list.name %></strong>
     <br><%= image_tag list.images[0].photo.thumb %>
+    <% end %>
   <% end %>
 </div>
 
