@@ -18,6 +18,11 @@
       <% end %>
         <%= link_to_add_association "Add a Photo", f, :images %>
     </div>
+    <div class="field">
+      <%= f.label :roomates, 'Are you looking for a roomate?' %>
+      <%= f.check_box :roomates %>
+
+    </div>
     <div class="action">
       <%= f.submit "Submit Listing" %>
     </div>

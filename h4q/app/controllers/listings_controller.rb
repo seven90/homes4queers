@@ -4,7 +4,7 @@ class ListingsController < ApplicationController
       # @listings = Listing.search(params[:search]).order("created_at DESC")
       @listings = Listing.near(params[:search])
     elsif params[:latitude] && params[:longitude]
-      @listings = Listing.near(params[:latitude], params[:longitude])
+      @listings = Listing.near([params[:latitude], params[:longitude]])
     else
      @listings = Listing.order("created_at DESC")
     end

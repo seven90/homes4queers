@@ -1,9 +1,12 @@
 <h1>Listings</h1>
+
 <div class="nav">
   <%= link_to 'Add a New Listing', new_listing_path %><br>
   <br>
 </div>
+
 <%= button_tag 'Listings Near Me', id: 'search-nearby' %>
+
 <div class="searchbar">
   <%= form_tag listings_path, method: :get, authentification: false, id: 'search-form' do %>
     <%= text_field_tag :search, params[:search] %>

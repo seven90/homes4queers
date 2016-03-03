@@ -1,14 +1,13 @@
 <h1>Profile for <%= @user.name %></h1>
 <div class="info">
   <%= @user.name %><br>
-</div>
-<div class="about_me">
-  <%= @user.about_me %><br>
-</div>
-<div class="pic">
   <%= link_to image_url @user.avatar do %>
   <%= image_tag @user.avatar.thumb, class:"profile_pic", alt:"Profile picture thumbnail" %><br>
   <% end %>
+</div>
+
+<div class="description">
+  <%= @user.about_me %><br>
 </div>
 
 <hr>

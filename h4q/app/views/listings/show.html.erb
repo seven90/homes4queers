@@ -1,16 +1,26 @@
 <div class="nav">
   <br>
 </div>
+
 <h1><%= @listing.name %></h1>
+
 <div class="info">
   <% @listing.images.each do |p|%>
     <%= image_tag p.photo, alt: "listing picture"%><br>
   <% end %>
-  <%= @listing.location %>
+  <%= pluralize(@listing.bedrooms, "Bedroom") %><br>
+  <%= @listing.location %><br>
 </div>
-<div class="about_me">
+
+<div class="description">
   <%= @listing.description %>
 </div>
+
+<div class="posted_by">
+  This listing was made by <%= link_to @listing.user.name, @listing.user %>
+</div>
+
+
 <hr>
 <div class="nearby">
   <h2>Nearby Listings</h2>

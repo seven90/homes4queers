@@ -12,7 +12,7 @@ function works(position){
   $.ajax({
     url: '/listings',
     method: 'GET',
-    data: {latitude: lat, logitude: lon},
+    data: {latitude: lat, longitude: lon},
     dataType: 'script'
   })
 }
