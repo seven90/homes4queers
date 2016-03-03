@@ -1,5 +1,5 @@
 <% @listings.each do |list| %>
-  <div class="listing">
+  <div class='single-listing'>
     <%= link_to listing_path(list) do %>
       <br><%= list.name %>
       <br><%= image_tag list.thumbnail %>

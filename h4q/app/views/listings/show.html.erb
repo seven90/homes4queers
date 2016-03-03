@@ -1,7 +1,9 @@
 <div class="nav">
   <br>
 </div>
-
+<% if current_user.id == @listing.user_id %>
+  <%= link_to edit_listing_path(@listing) %>
+<% end %>
 <h1><%= @listing.name %></h1>
 
 <div class="info">

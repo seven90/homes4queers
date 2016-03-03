@@ -1,10 +1,5 @@
 <h1>Listings</h1>
 
-<div class="nav">
-  <%= link_to 'Add a New Listing', new_listing_path %><br>
-  <br>
-</div>
-
 <%= button_tag 'Listings Near Me', id: 'search-nearby' %>
 
 <div class="searchbar">
@@ -15,6 +10,6 @@
 </div>
 
 
-<div class="listings">
+<div class="listing">
 <%= render 'listing' %>
 </div>
