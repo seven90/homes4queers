@@ -5,6 +5,7 @@
 <h1><%= @listing.name %></h1>
 
 <div class="info">
+  $<%= @listing.price %> per month<br>
   <% @listing.images.each do |p|%>
     <%= image_tag p.photo, alt: "listing picture"%><br>
   <% end %>
@@ -27,6 +28,7 @@
   <% @nearby_listings.each do |list| %>
     <%= link_to listing_path(list) do %>
     <br><strong><%= list.name %></strong>
+    <%=  %>
     <br><%= image_tag list.thumbnail %>
     <% end %>
     <br><%= list.display_distance_in_meters(@listing) %> m away
