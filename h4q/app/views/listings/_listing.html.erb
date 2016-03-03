@@ -1,0 +1,9 @@
+<% @listings.each do |list| %>
+  <div class="listing">
+    <%= link_to listing_path(list) do %>
+      <br><%= list.name %>
+      <br><%= image_tag list.images[0].photo.thumb %>
+      <br><%= list.location %>
+    <% end %>
+  </div>
+<% end %>
