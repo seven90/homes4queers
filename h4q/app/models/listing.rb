@@ -12,4 +12,8 @@ class Listing < ActiveRecord::Base
   def self.search(query)
     where("LOWER(name) LIKE LOWER(?)", "%#{query}%")
   end
+
+  def display_distance_in_meters(other_listing)
+    self.distance_to(other_listing, :km).round(3)
+  end
 end

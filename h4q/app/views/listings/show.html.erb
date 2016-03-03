@@ -18,6 +18,7 @@
     <br><strong><%= list.name %></strong>
     <br><%= image_tag list.images[0].photo.thumb %>
     <% end %>
+    <br><%= list.display_distance_in_meters(@listing) %> km away
   <% end %>
 </div>
 
