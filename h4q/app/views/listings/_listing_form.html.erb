@@ -9,8 +9,17 @@
       <%= f.text_area :description %>
     </div>
     <div class="field">
+      <%= f.label :bedrooms, 'How many available bedrooms?'%>
+      <%= f.number_field :bedrooms %>
+    </div>
+    <div class="field">
       <%= f.label :location, "Address (or area)" %>
       <%= f.text_field :location %>
+    </div>
+    <div class="field">
+      <%= f.label :rent_date, "Available From" %>
+      <%= f.date_field :rent_date %>
+
     </div>
     <div class="field">
       <% f.fields_for :images do |photo| %>

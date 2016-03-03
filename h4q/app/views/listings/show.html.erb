@@ -27,7 +27,7 @@
   <% @nearby_listings.each do |list| %>
     <%= link_to listing_path(list) do %>
     <br><strong><%= list.name %></strong>
-    <br><%= image_tag list.images[0].photo.thumb %>
+    <br><%= image_tag list.thumbnail %>
     <% end %>
     <br><%= list.display_distance_in_meters(@listing) %> m away
   <% end %>

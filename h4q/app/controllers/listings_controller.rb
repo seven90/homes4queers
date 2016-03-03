@@ -17,7 +17,7 @@ class ListingsController < ApplicationController
   def show
     @commentable = Listing.find(params[:id])
     @listing = Listing.find(params[:id])
-    @nearby_listings = @listing.nearbys(0.5, unit: :km)
+    @nearby_listings = @listing.nearbys_if_geocoded
 
   end
 
@@ -55,7 +55,7 @@ class ListingsController < ApplicationController
   private
 
   def listing_params
-    params.require(:listing).permit(:name, :description, :location, :user_id, images_attributes: [:photo])
+    params.require(:listing).permit(:name, :description, :location, :user_id, :roomates, :bedrooms, images_attributes: [:photo])
   end
 
 end
