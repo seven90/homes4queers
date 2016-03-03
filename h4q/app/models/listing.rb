@@ -4,6 +4,8 @@ class Listing < ActiveRecord::Base
   has_many :tags, as: :taggable
   has_many :images
 
+  geocoded_by :location
+
   accepts_nested_attributes_for :images, allow_destroy: true
 
   def self.search(query)
