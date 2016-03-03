@@ -1,11 +1,6 @@
-- /salting emails in database
-- /calling polymorphic stuff in views
-- /attr_accessor? in users
-- /strong params in users --what do we put there?
-- need images controller? or just .build
-- f: image no method error
-- why is logout a post with sorcery?
-- before action for comments stuff?
-- somebody just teach us polymorphism please
+- /encrypting emails in database
 
-- can Natalie just live with me until this is done?
+- before action for comments stuff?
+
+
+- can Natalabby just live with me until this is done?

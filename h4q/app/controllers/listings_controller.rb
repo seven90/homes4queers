@@ -1,7 +1,10 @@
 class ListingsController < ApplicationController
   def index
     if params[:search]
-      @listings = Listing.search(params[:search]).order("created_at DESC")
+      # @listings = Listing.search(params[:search]).order("created_at DESC")
+      @listings = Listing.near(params[:search])
+    elsif params[:latitude] && params[:longitude]
+      @listings = Listing.near(params[:latitude], params[:longitude])
     else
      @listings = Listing.order("created_at DESC")
     end
@@ -14,6 +17,7 @@ class ListingsController < ApplicationController
   def show
     @commentable = Listing.find(params[:id])
     @listing = Listing.find(params[:id])
+    @nearby_listings = @listing.nearbys(0.5, unit: :km)
 
   end
 

@@ -6,23 +6,23 @@
   <% @listing.images.each do |p|%>
     <%= image_tag p.photo, alt: "listing picture"%><br>
   <% end %>
-  <%= @listing.name %><br>
+  <%= @listing.location %>
 </div>
 <div class="about_me">
   <%= @listing.description %>
 </div>
+<hr>
+<div class="nearby">
+  <h2>Nearby Listings</h2>
+  <% @nearby_listings.each do |list| %>
+    <%= link_to listing_path(list) do %>
+    <br><strong><%= list.name %></strong>
+    <br><%= image_tag list.images[0].photo.thumb %>
+    <% end %>
+    <br><%= list.display_distance_in_meters(@listing) %> m away
+  <% end %>
+</div>
 
 <hr>
 <h4>User Comments</h4>
-<div class="new comment">
-  <%= render :partial => 'comments/comment_form' %>
-</div>
-<hr>
-<% @listing.comments.each do |c| %>
-  <div class="show comment">
-    <b><%= c.user.name %> says: </b><br>
-    <%= c.body %><br>
-    <%= c.created_at.to_formatted_s(:long) %>
-    <hr>
-  </div>
-<% end %>
+<%= render 'comments' %>
