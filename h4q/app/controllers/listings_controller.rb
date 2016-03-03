@@ -14,6 +14,7 @@ class ListingsController < ApplicationController
   def show
     @commentable = Listing.find(params[:id])
     @listing = Listing.find(params[:id])
+    @nearby_listings = @listing.nearbys
 
   end
 

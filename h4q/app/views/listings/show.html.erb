@@ -10,6 +10,14 @@
 <div class="about_me">
   <%= @listing.description %>
 </div>
+<hr>
+<div class="nearby">
+  <h2>Nearby Listings</h2>
+  <% @nearby_listings.each do |list| %>
+    <br><strong><%= list.name %></strong>
+    <br><%= image_tag list.images[0].photo.thumb %>
+  <% end %>
+</div>
 
 <hr>
 <h4>User Comments</h4>
