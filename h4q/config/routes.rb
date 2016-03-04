@@ -3,6 +3,9 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :comments
+      collection do
+        match 'search'=> 'user#search', via: [:get, :post], as: :search
+      end
   end
   resources :listings do
     resources :comments

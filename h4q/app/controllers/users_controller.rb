@@ -2,18 +2,24 @@ class UsersController < ApplicationController
   before_action :require_login, only: [:edit, :update, :destroy]
 
   def index
-    if params[:search]
-      results
+    if params[:q]
+      @q = User.ransack(params[:q])
+      @user = @q.result.includes(:tagged_with)
+      # results
     else
      @users = User.order("created_at DESC")
     end
   end
 
-  def results
-  @users = User.where("LOWER(name) LIKE LOWER(?)", "%#{params[:search]}%") \
-    | User.tagged_with(params[:search])
-  end
+  # def results
+  # @users = User.where("LOWER(name) LIKE LOWER(?)", "%#{params[:search]}%") \
+  #   | User.tagged_with(params[:search])
+  # end
 
+  def search
+    index
+    render :index
+  end
 
   def new
     @user = User.new
