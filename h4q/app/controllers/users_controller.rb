@@ -3,13 +3,16 @@ class UsersController < ApplicationController
 
   def index
     if params[:search]
-    @users = User.search(params[:search]).order("created_at DESC")
+      results
     else
      @users = User.order("created_at DESC")
     end
   end
 
-
+  def results
+  @users = User.where("name LIKE ?", "%#{params[:search]}%") \
+    | User.tagged_with(params[:search])
+  end
 
 
   def new

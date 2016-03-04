@@ -11,10 +11,15 @@ class User < ActiveRecord::Base
   validates :password_confirmation, presence: true, on: :create
   validates :email, uniqueness: true
 
+  # def self.results(query)
+  # where("name LIKE ?", "%#{query}%") ||| tagged_with("%#{query}%")
+  # end
 
-  def self.search(query)
-    where("LOWER(name) LIKE LOWER(?)", "%#{query}%") ||
-    tagged_with("%#{query}%")
-  end
-
+  # def self.results(query)
+  #   where("LOWER(name) LIKE LOWER(?)", "%#{query}%")
+  # end
+  #
+  # def self.tag_results(query)
+  #   tagged_with("%#{query}%")
+  # end
 end

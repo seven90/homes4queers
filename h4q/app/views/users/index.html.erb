@@ -7,14 +7,6 @@
   <% end %>
 </div>
 
-<% if @users.any? %>
-  <% @users.each do |usr| %>
-  <div class="user">
-    <%= link_to user_path(usr) do %>
-    <%= image_tag usr.avatar.thumb, class: "profile_pic", alt: "Profile picture thumbnail" %><br>
-    <%= usr.name %>
-    <% end %>
-  </div>
-
-  <% end %>
-<% end %>
+<div class="user">
+<%= render 'user' %>
+</div>
