@@ -1,4 +1,5 @@
 class ListingsController < ApplicationController
+  before_action :require_login, except: [:index, :show]
   def index
     if params[:search]
       # @listings = Listing.search(params[:search]).order("created_at DESC")
@@ -55,7 +56,7 @@ class ListingsController < ApplicationController
   private
 
   def listing_params
-    params.require(:listing).permit(:name, :description, :location, :user_id, :roomates, :bedrooms, images_attributes: [:photo])
+    params.require(:listing).permit(:name, :description, :location, :user_id, :roomates, :bedrooms, :price, images_attributes: [:photo])
   end
 
 end

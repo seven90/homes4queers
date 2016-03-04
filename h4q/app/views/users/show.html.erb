@@ -9,6 +9,19 @@
 <div class="description">
   <%= @user.about_me %><br>
 </div>
+<hr>
+<div class="user-listings">
+  <%= @user.name %>'s Listings
+  <% @user.listings.each do |list| %>
+  <div class='single-listing'>
+    <%= link_to listing_path(list) do %>
+      <br><%= list.name %>
+      <br><%= image_tag list.thumbnail %>
+      <br><%= list.location %>
+    <% end %>
+  </div>
+  <% end %>
+</div>
 
 <div class="tags">
   <h4>Identifier tags:</h4>

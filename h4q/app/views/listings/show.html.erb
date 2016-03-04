@@ -1,10 +1,13 @@
 <div class="nav">
   <br>
 </div>
-
+<% if @listing.user_id == current_user.id%>
+  <%= link_to "Edit", edit_listing_path(@listing) %>
+<% end %>
 <h1><%= @listing.name %></h1>
 
 <div class="info">
+  $<%= @listing.price %> per month<br>
   <% @listing.images.each do |p|%>
     <%= image_tag p.photo, alt: "listing picture"%><br>
   <% end %>
@@ -19,14 +22,16 @@
 <div class="posted_by">
   This listing was made by <%= link_to @listing.user.name, @listing.user %>
 </div>
-
-
+<hr>
+<div id="map-show" data-latitude='<%= @listing.latitude %>' data-longitude='<%= @listing.longitude %>'></div>
+<script>window.nearby = <%=raw @nearby_listings.map {|l| {lat: l.latitude, lng: l.longitude}}.to_json %>;</script>
 <hr>
 <div class="nearby">
   <h2>Nearby Listings</h2>
   <% @nearby_listings.each do |list| %>
     <%= link_to listing_path(list) do %>
     <br><strong><%= list.name %></strong>
+    <%=  %>
     <br><%= image_tag list.thumbnail %>
     <% end %>
     <br><%= list.display_distance_in_meters(@listing) %> m away

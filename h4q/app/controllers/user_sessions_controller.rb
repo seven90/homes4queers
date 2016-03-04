@@ -4,10 +4,11 @@ class UserSessionsController < ApplicationController
   end
 
   def create
-    if @user = login(params[:email || :name], params[:password])
-      redirect_back_or_to(:users, notice: 'You logged in')
+    if @user = login(params[:email], params[:password], params[:remember])
+      redirect_back_or_to(user_path(current_user), notice: 'You logged in')
     else
       flash.now[:alert] = 'Login failed'
+      # @user.failed_logins_count + 1 or something
       render :new
     end
   end

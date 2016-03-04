@@ -1,5 +1,9 @@
 - /encrypting emails in database
-- before action for comments stuff?
-- attempt to filter by current location just renders out list of listings again
 
-- can Natalabby just live with me until this is done?
+- map renders only on refresh
+- uncaught error google not defined ALL THE GODDAMN TIME
+- sorcery brute_force not working like it should
+- set so javascript for map isn't trying to do shit on non map pages
+- listings/show.html.erb => if current_user.id throws method error when logged out
+
+
