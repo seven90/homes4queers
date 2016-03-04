@@ -2,8 +2,15 @@ class UsersController < ApplicationController
   before_action :require_login, only: [:edit, :update, :destroy]
 
   def index
-    @users = User.all
+    if params[:search]
+    @users = User.search(params[:search]).order("created_at DESC")
+    else
+     @users = User.order("created_at DESC")
+    end
   end
+
+
+
 
   def new
     @user = User.new

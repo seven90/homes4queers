@@ -1,0 +1,8 @@
+<% @users.each do |user| %>
+  <div class='single-listing'>
+    <%= link_to user_path(user) do %>
+      <br><%= user.name %>
+      <br><%= image_tag user.thumbnail %>
+    <% end %>
+  </div>
+<% end %>

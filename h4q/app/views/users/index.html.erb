@@ -1,4 +1,12 @@
 <h1>Everyone</h1>
+
+<div class="searchbar">
+  <%= form_tag users_path, method: :get, authentification: false, id: 'search-form' do %>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search" %>
+  <% end %>
+</div>
+
 <% if @users.any? %>
   <% @users.each do |usr| %>
   <div class="user">
