@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160304023420) do
+ActiveRecord::Schema.define(version: 20160304214330) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,17 @@ ActiveRecord::Schema.define(version: 20160304023420) do
   end
 
   add_index "comments", ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id", using: :btree
+
+  create_table "favourites", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "favourited_id"
+    t.string   "favourited_type"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "favourites", ["favourited_type", "favourited_id"], name: "index_favourites_on_favourited_type_and_favourited_id", using: :btree
+  add_index "favourites", ["user_id"], name: "index_favourites_on_user_id", using: :btree
 
   create_table "images", force: :cascade do |t|
     t.string   "photo"
@@ -91,5 +102,6 @@ ActiveRecord::Schema.define(version: 20160304023420) do
   add_index "users", ["remember_me_token"], name: "index_users_on_remember_me_token", using: :btree
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", using: :btree
 
+  add_foreign_key "favourites", "users"
   add_foreign_key "listings", "users"
 end

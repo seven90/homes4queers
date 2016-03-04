@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'favourites/create'
+
+  get 'favourites/destroy'
+
   root 'listings#index'
 
   resources :users do
