@@ -19,7 +19,10 @@
     <%= f.text_area :about_me %><br>
   </div>
   <div class="field">
-
+    <%= f.label :tag_list, 'Add tags, seprated by a comma' %>
+    <%= f.text_field :tag_list %>
+  </div>
+  <div class="field">
     <%= f.file_field :avatar %><br>
   </div>
   <div class="action">

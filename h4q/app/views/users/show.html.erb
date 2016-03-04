@@ -10,6 +10,12 @@
   <%= @user.about_me %><br>
 </div>
 
+<div class="tags">
+  <h4>Identifier tags:</h4>
+  <%= @user.tag_list %>
+</div>
+
+
 <hr>
 <h4>User Comments</h4>
 <%= render 'comments' %>

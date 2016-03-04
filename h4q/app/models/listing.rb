@@ -3,7 +3,6 @@ class Listing < ActiveRecord::Base
   has_many :comments, as: :commentable
   has_many :tags, as: :taggable
   has_many :images
-
   geocoded_by :location
   after_validation :geocode, if: :location_changed?
 

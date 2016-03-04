@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+
   end
 
   def show
@@ -46,6 +47,6 @@ class UsersController < ApplicationController
 
   def user_params
     #image is nested in a hash
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :about_me, :avatar)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :about_me, :avatar, :tag_list)
   end
 end
