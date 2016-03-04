@@ -55,6 +55,19 @@ class UsersController < ApplicationController
     redirect_back_or_to listings_path
   end
 
+  def favourite
+    if Favourite.create(favourited: @user, user: current_user)
+      redirect_to @user, notice: "Added to favourites"
+    else
+      redirect_to @user, alert: "Something went wrong, better blame the developers"
+    end
+  end
+
+  def unfavourite
+    if Favourite.where(favourited_id: @user.id, user_id: current_user.id).first.destroy
+      redirect_to @user, notice: "Unfavourited this person (don't worry, we won't tell)"
+    end
+  end
   private
 
   def user_params

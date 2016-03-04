@@ -53,6 +53,20 @@ class ListingsController < ApplicationController
     redirect_to listings_path
   end
 
+  def favourite
+    if Favourite.create(favourited: @listing, user: current_user)
+      redirect_to @listing, notice: "Added to favourites"
+    else
+      redirect_to @listing, alert: "Something went wrong, better blame the developers"
+    end
+  end
+
+  def unfavourite
+    if Favourite.where(favourited_id: @listing.id, user_id: current_user.id).first.destroy
+      redirect_to @listing, notice: "Unfavourited listing"
+    end
+  end
+
   private
 
   def listing_params
