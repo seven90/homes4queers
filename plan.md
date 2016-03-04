@@ -68,7 +68,7 @@ by Friday 4th
 - suspend listings/profiles >>both users and admins
 - random profile!!!
 
-evaluate by friday 4th
+By Tuesday
 
 
 4th
