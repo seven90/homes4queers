@@ -8,6 +8,7 @@ class UserSessionsController < ApplicationController
       redirect_back_or_to(user_path(current_user), notice: 'You logged in')
     else
       flash.now[:alert] = 'Login failed'
+      # @user.failed_logins_count + 1 or something
       render :new
     end
   end
