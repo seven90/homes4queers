@@ -13,4 +13,8 @@ $(document).on('ready page:load', function(){
         map: map
       });
     }
+    if (canvas.length > 0){
+      initMap();
+    }
+
 });

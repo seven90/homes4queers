@@ -3,8 +3,8 @@
 <head>
   <title>H4q</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyC49SZwfsHvdzEkLGZJClMzXunKm4kZ5YQ" %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyC49SZwfsHvdzEkLGZJClMzXunKm4kZ5YQ&callback=initMap", async: true%>
   <%= csrf_meta_tags %>
 
 </head>
@@ -12,7 +12,8 @@
 
 <div class="user_nav">
   <% if current_user %>
-    <%= link_to 'Logout', :logout, method: :post %>
+    Logged in as <%= link_to current_user.name, user_path(current_user) %><br>
+    <%= link_to 'Logout', :logout, method: :post %><br>
     <%= link_to 'Add a listing', new_listing_path  %>
   <% else %>
     <%= link_to 'Register', new_user_path %>

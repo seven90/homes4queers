@@ -1,6 +1,6 @@
 <% @listings.each do |list| %>
   <div class='single-listing'>
-    <%= link_to listing_path(list) do %>
+    <%= link_to listing_path(list), data: { no_turbolink: true } do %>
       <br><%= list.name %>
       <br><%= image_tag list.thumbnail %>
       <br><%= list.location %>
