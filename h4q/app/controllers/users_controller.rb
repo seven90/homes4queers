@@ -10,7 +10,7 @@ class UsersController < ApplicationController
   end
 
   def results
-  @users = User.where("name LIKE ?", "%#{params[:search]}%") \
+  @users = User.where("LOWER(name) LIKE LOWER(?)", "%#{params[:search]}%") \
     | User.tagged_with(params[:search])
   end
 
