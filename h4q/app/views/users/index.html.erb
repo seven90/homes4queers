@@ -21,18 +21,6 @@
   <th><%#= sort_link(@search, :name, 'Name') %>Name</th>
   <th> User Tags </th>
   <div class="user">
-    <%#= render 'user' %>
-    <% @users.each do |user| %>
-
-      <div class='single-listing'>
-        <tr class="user-row">
-          <%= link_to user_path(user) do %>
-            <td><%= image_tag user.avatar.thumb %></td>
-            <td><%= user.name %></td>
-            <td><%= user.tag_list %></td>
-            <% end %>
-        </tr>
-      </div>
-    <% end %>
+    <%= render 'user' %>
   </div>
 </table>
