@@ -22,7 +22,8 @@
 <div class="posted_by">
   This listing was made by <%= link_to @listing.user.name, @listing.user %>
 </div>
-
+<hr>
+<div id="map-show" data-latitude='<%= @listing.latitude %>' data-longitude='<%= @listing.longitude %>'></div>
 
 <hr>
 <div class="nearby">
