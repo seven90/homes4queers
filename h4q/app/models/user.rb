@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   validates :password_confirmation, presence: true, on: :create
   validates :email, uniqueness: true
 
+
   # def self.results(query)
   # where("name LIKE ?", "%#{query}%") ||| tagged_with("%#{query}%")
   # end

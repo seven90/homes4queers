@@ -1,11 +1,13 @@
 <h1>Everyone</h1>
 
-<%= search_form_for @q do |f| %>
-  <%= f.label :name_or_tags_cont, "Search by name or tags" %>
-  <%= f.search_field :name_or_tags_cont %>
 
-  <%= f.submit %>
-<% end %>
+  <%= search_form_for @q do |f| %>
+    <%= f.label :name_or_tags_name_cont, "Search by name or tags" %>
+    <%= f.search_field :name_or_tags_name_cont %>
+
+    <%= f.submit %>
+  <% end %>
+
 
 <!-- <div class="searchbar">
   <%#= form_tag users_path, method: :get, authentification: false, id: 'search-form' do %>
@@ -15,7 +17,22 @@
 </div> -->
 
 <table class="user_list">
+  <th> </th>
+  <th><%#= sort_link(@search, :name, 'Name') %>Name</th>
+  <th> User Tags </th>
   <div class="user">
-    <%= render 'user' %>
+    <%#= render 'user' %>
+    <% @users.each do |user| %>
+
+      <div class='single-listing'>
+        <tr class="user-row">
+          <%= link_to user_path(user) do %>
+            <td><%= image_tag user.avatar.thumb %></td>
+            <td><%= user.name %></td>
+            <td><%= user.tag_list %></td>
+            <% end %>
+        </tr>
+      </div>
+    <% end %>
   </div>
 </table>

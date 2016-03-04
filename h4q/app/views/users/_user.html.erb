@@ -1,10 +1,12 @@
 <% @users.each do |user| %>
-  <div class='single-user'>
-    <tr><%= link_to user_path(user) do %></tr>
+
+  <div class='single-listing'>
+    <tr class="user-row">
+      <%= link_to user_path(user) do %>
         <td><%= image_tag user.avatar.thumb %></td>
+        <% end %>
         <td><%= user.name %></td>
         <td><%= user.tag_list %></td>
-      <% end %>
     </tr>
   </div>
 <% end %>
