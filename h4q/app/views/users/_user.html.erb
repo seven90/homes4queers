@@ -1,8 +1,11 @@
-<% @users.each do |user| %>
   <div class='single-listing'>
     <%= link_to user_path(user) do %>
       <br><%= user.name %>
       <br><%= image_tag user.avatar.thumb %>
     <% end %>
+    <% unless current_user.favourite_users.exists?(id: user.id) %>
+      <%= link_to 'Add to favorites', favourite_user_path(user.id), method: :post %>
+    <% else %>
+      <%= link_to 'Remove from favorites', unfavourite_user_path(user), method: :delete %>
+    <% end %>
   </div>
-  <% end %>

@@ -58,7 +58,7 @@ class UsersController < ApplicationController
   def favourite
     @user = User.find(params[:id])
     if Favourite.create(favourited: @user, user: current_user)
-      redirect_to @user, notice: "Added to favourites"
+      redirect_to :back, notice: "Added to favourites"
     else
       redirect_to :back, alert: "Something went wrong, better blame the developers"
     end
