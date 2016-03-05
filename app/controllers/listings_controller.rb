@@ -1,14 +1,22 @@
 class ListingsController < ApplicationController
   before_action :require_login, except: [:index, :show]
   def index
-    if params[:search]
-      # @listings = Listing.search(params[:search]).order("created_at DESC")
-      @listings = Listing.near(params[:search])
+    @q = Listing.ransack(params[:q])
+    if params[:q]
+      @listings = @q.result.distinct
+      @q.build_condition if @q.conditions.empty?
+      @q.build_sort if @q.sorts.empty?
+      # @listings = Listing.near(params[:search])
     elsif params[:latitude] && params[:longitude]
       @listings = Listing.near([params[:latitude], params[:longitude]])
     else
      @listings = Listing.order("created_at DESC")
     end
+  end
+
+  def search
+    index
+    render :index
   end
 
   def new
