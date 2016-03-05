@@ -1,12 +1,24 @@
 <h1>Everyone</h1>
 
-<div class="searchbar">
-  <%= form_tag users_path, method: :get, authentification: false, id: 'search-form' do %>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "Search" %>
-  <% end %>
-</div>
+  <%= search_form_for @q do |f| %>
+    <%= f.label :name_or_tags_name_cont, "Search by name or tags" %>
+    <%= f.search_field :name_or_tags_name_cont %>
 
-<div class="user">
-<%= render @users %>
-</div>
+    <%= f.submit %>
+  <% end %>
+
+<!-- <div class="searchbar">
+  <%#= form_tag users_path, method: :get, authentification: false, id: 'search-form' do %>
+    <%#= text_field_tag :search, params[:search] %>
+    <%#= submit_tag "Search" %>
+  <%# end %>
+</div> -->
+
+<table class="user_list">
+  <th> </th>
+  <th><%#= sort_link(@search, :name, 'Name') %>Name</th>
+  <th> User Tags </th>
+  <div class="user">
+    <%= render @users %>
+  </div>
+</table>

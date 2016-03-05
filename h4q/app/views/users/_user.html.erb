@@ -1,11 +1,15 @@
-  <div class='single-listing'>
-    <%= link_to user_path(user) do %>
-      <br><%= user.name %>
-      <br><%= image_tag user.avatar.thumb %>
-    <% end %>
-    <% unless current_user.favourite_users.exists?(id: user.id) %>
-      <%= link_to 'Add to favorites', favourite_user_path(user.id), method: :post %>
-    <% else %>
-      <%= link_to 'Remove from favorites', unfavourite_user_path(user), method: :delete %>
-    <% end %>
-  </div>
+<div class='single-user'>
+   <tr class="user-row">
+     <td><%= link_to user_path(user) do %>
+       <%= image_tag user.avatar.thumb %>
+       <td><%=user.name%></td>
+       <% end %></td>
+       <td><%= user.tag_list %></td>
+       <% unless current_user.favourite_users.exists?(user.id) %>
+       <td><%= link_to 'Add to favorites', favourite_user_path(user.id), method: :post %></td>
+       <% else %>
+       <td><%= link_to 'Remove from favorites', unfavourite_user_path(user.id), method: :delete %></td>
+       <% end %>
+
+   </tr>
+ </div>
