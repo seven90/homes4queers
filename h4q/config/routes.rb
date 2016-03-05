@@ -8,6 +8,10 @@ Rails.application.routes.draw do
     end
     resources :comments
     resources :favourites, only: [:index]
+      collection do
+        match 'search'=> 'user#search', via: [:get, :post], as: :search
+      end
+
   end
   resources :listings do
     member do
