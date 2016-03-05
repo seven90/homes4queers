@@ -1,0 +1,36 @@
+<h1>Listings</h1>
+
+<%= button_tag 'Listings Near Me', id: 'search-nearby' %>
+
+<%= search_form_for @q, url: search_listings_path,
+                        html: { method: :post } do |f| %>
+  <%= f.label :name_cont, "Search Listings" %>
+  <%= f.text_field :name_cont %>
+
+  <h4>Advanced Search</h4>
+
+  <%= f.label :price_gteq, "Minimum Price" %>
+  <%= f.text_field :price_gteq %>
+
+  <%= f.label :price_lteq, "Maximum Price" %>
+  <%= f.text_field :price_lteq %>
+<br>
+  <%= f.label :location_cont, "Address" %>
+  <%= f.text_field :location_cont %>
+<br>
+  <%= f.label :bedrooms_gteq, "Minimum Number of bedrooms" %>
+  <%= f.text_field :bedrooms_gteq %>
+  <%= f.submit %>
+<% end %>
+
+
+ <table class="user_list">
+   <th>Sort by:</th>
+   <th><%= sort_link @q, :name, 'Name' %></th>
+   <th><%= sort_link @q, :price, 'Price' %></th>
+ </table>
+
+
+<div class="listing">
+  <%= render @listings %>
+</div>
