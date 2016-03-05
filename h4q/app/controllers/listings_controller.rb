@@ -56,7 +56,7 @@ class ListingsController < ApplicationController
   def favourite
     @listing = Listing.find(params[:id])
     if Favourite.create(favourited: @listing, user: current_user)
-      redirect_to listing_path(@listing), notice: "Added to favourites"
+      redirect_to :back, notice: "Added to favourites"
     else
       redirect_to :back, alert: "Something went wrong, better blame the developers"
     end
