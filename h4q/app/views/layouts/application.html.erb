@@ -14,7 +14,8 @@
   <% if current_user %>
     Logged in as <%= link_to current_user.name, user_path(current_user) %><br>
     <%= link_to 'Logout', :logout, method: :post %><br>
-    <%= link_to 'Add a listing', new_listing_path  %>
+    <%= link_to 'Add a listing', new_listing_path  %><br>
+    <%= link_to 'My Favourites', user_favourites_path(current_user) %>
   <% else %>
     <%= link_to 'Register', new_user_path %>
     <%= link_to 'Login', :login %>

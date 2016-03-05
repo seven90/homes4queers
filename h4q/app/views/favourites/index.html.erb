@@ -1,1 +1,30 @@
 <h1><%= current_user.name %>'s Favourites</h1>
+
+<div id="favourite-listings">
+  <h2>Favourite Listings</h2>
+  <% if current_user %>
+    <% current_user.favourite_listings.each do |list|%><br>
+      <%= link_to listing_path(list), data: { no_turbolink: true } do %>
+        <br><%= list.name %>
+        <br><%= image_tag list.thumbnail %>
+        <br><%= list.location %>
+      <% end %>
+      <br><%= link_to 'Remove from favorites', unfavourite_listing_path(list), method: :delete %>
+
+    <% end %>
+  <% end %>
+</div>
+
+<div id="favourite-users">
+  <h2>Favourite People</h2>
+  <% if current_user %>
+    <% current_user.favourite_users.each do |user|%><br>
+      <%= link_to user_path(user), data: { no_turbolink: true } do %>
+        <br><%= user.name %>
+        <br><%= image_tag user.avatar.thumb %>
+      <% end %>
+      <br><%= link_to 'Remove from favorites', unfavourite_user_path(user), method: :delete %>
+
+    <% end %>
+  <% end %>
+</div>

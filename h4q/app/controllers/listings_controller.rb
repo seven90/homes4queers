@@ -54,16 +54,18 @@ class ListingsController < ApplicationController
   end
 
   def favourite
+    @listing = Listing.find(params[:id])
     if Favourite.create(favourited: @listing, user: current_user)
-      redirect_to @listing, notice: "Added to favourites"
+      redirect_to listing_path(@listing), notice: "Added to favourites"
     else
-      redirect_to @listing, alert: "Something went wrong, better blame the developers"
+      redirect_to :back, alert: "Something went wrong, better blame the developers"
     end
   end
 
   def unfavourite
-    if Favourite.where(favourited_id: @listing.id, user_id: current_user.id).first.destroy
-      redirect_to @listing, notice: "Unfavourited listing"
+    @listing = Listing.find(params[:id])
+    if Favourite.where(favourited_id: @listing.id, user_id: current_user.id).last.destroy
+      redirect_to :back, notice: "Unfavourited listing"
     end
   end
 

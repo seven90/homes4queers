@@ -56,18 +56,21 @@ class UsersController < ApplicationController
   end
 
   def favourite
+    @user = User.find(params[:id])
     if Favourite.create(favourited: @user, user: current_user)
       redirect_to @user, notice: "Added to favourites"
     else
-      redirect_to @user, alert: "Something went wrong, better blame the developers"
+      redirect_to :back, alert: "Something went wrong, better blame the developers"
     end
   end
 
   def unfavourite
+    @user = User.find(params[:id])
     if Favourite.where(favourited_id: @user.id, user_id: current_user.id).first.destroy
-      redirect_to @user, notice: "Unfavourited this person (don't worry, we won't tell)"
+      redirect_to :back, notice: "Successfully unfavourited someone (they'll never know)"
     end
   end
+
   private
 
   def user_params

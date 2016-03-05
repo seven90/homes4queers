@@ -1,3 +1,9 @@
+<% unless current_user.favourite_users.exists?(id: @user.id) %>
+  <%= link_to 'Add to favorites', favourite_user_path(user_id: @user), method: :post %>
+<% else %>
+  <%= link_to 'Remove from favorites', unfavourite_user_path(@user), method: :delete %>
+<% end %>
+
 <h1>Profile for <%= @user.name %></h1>
 <div class="info">
   <%= @user.name %><br>
