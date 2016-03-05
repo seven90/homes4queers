@@ -1,0 +1,25 @@
+without logging in, users can:
+view all listings
+view map
+search
+view site info, external links etc.
+
+users must log in to:
+view user profiles
+make new listings
+comment on user/listings
+contact users
+flag listings/users
+
+sign up requires:
+name
+email
+password
+picture
+about me
+
+y/n/don't care + expand fields:
+pets
+allergies
+accessibilty considerations
+smoking

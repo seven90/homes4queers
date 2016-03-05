@@ -1,0 +1,43 @@
+<div id="listing-form">
+  <%= form_for @listing do |f| %>
+    <div class="field">
+      <%= f.label :name, "Title" %>
+      <%= f.text_field :name %>
+    </div>
+    <div class="field">
+      <%= f.label :price %>
+      <%= f.number_field :price %>
+    </div>
+    <div class="field">
+      <%= f.label :description, "Information" %>
+      <%= f.text_area :description %>
+    </div>
+    <div class="field">
+      <%= f.label :bedrooms, 'How many available bedrooms?'%>
+      <%= f.number_field :bedrooms %>
+    </div>
+    <div class="field">
+      <%= f.label :location, "Address (or area)" %>
+      <%= f.text_field :location %>
+    </div>
+    <div class="field">
+      <%= f.label :rent_date, "Available From" %>
+      <%= f.date_field :rent_date %>
+
+    </div>
+    <div class="field">
+      <% f.fields_for :images do |photo| %>
+        <%= render 'image_fields', f: photo %>
+      <% end %>
+        <%= link_to_add_association "Add a Photo", f, :images %>
+    </div>
+    <div class="field">
+      <%= f.label :roomates, 'Are you looking for a roomate?' %>
+      <%= f.check_box :roomates %>
+
+    </div>
+    <div class="action">
+      <%= f.submit "Submit Listing" %>
+    </div>
+  <% end %>
+</div>
