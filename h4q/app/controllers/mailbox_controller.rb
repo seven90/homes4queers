@@ -14,4 +14,5 @@ class MailboxController < ApplicationController
   def trash
     @trash = mailbox.trash
     @active = :trash
+  end
 end

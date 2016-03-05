@@ -1,5 +1,5 @@
 module ApplicationHelper
-  
+
   # def search_form_for(record, options = {}, &proc)
   #   if record.is_a? Ransack::Search
   #     search = record
@@ -64,5 +64,9 @@ module ApplicationHelper
     else
       url_for(options_for_url)
     end
+  end
+
+  def active_page(active_page)
+    @active == active_page ? "active" : ""
   end
 end
