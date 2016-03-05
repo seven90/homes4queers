@@ -2,14 +2,14 @@
   <div class="spacer"></div>
   <div class="col-md-12">
     <!-- we'll configure this to compose new conversations later -->
-    <%= button_to "Compose", "#"%>
+    <%= link_to "Compose", new_conversation_path %>
     <div class="spacer"></div>
   </div>
 
   <div class="col-md-4">
     <div class="panel panel-default">
       <div class="panel-body">
-        <%= render 'folders' %>
+        <%= render 'mailbox/folders' %>
       </div>
     </div>
   </div>
@@ -17,7 +17,11 @@
   <div class="col-md-8">
     <div class="panel panel-default">
       <div class="panel-body">
-        <!-- individual conversations will show here -->
+        <% if is_conversation %>
+            <%= render 'conversations/form' %>
+        <% else %>
+        <!-- todo -->
+        <% end %>
       </div>
     </div>
   </div>

@@ -29,6 +29,8 @@ gem 'cancancan'
 
 gem 'carrierwave'
 
+gem 'ransack'
+
 gem 'mini_magick'
 
 gem 'cocoon'

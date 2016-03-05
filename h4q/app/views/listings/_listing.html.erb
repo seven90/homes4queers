@@ -3,10 +3,12 @@
       <br><%= listing.name %>
       <br><%= image_tag listing.thumbnail %>
       <br><%= listing.location %>
-      <% unless current_user.favourite_listings.exists?(listing.id) %>
-      <br><%= link_to 'Add to favorites', favourite_listing_path(listing.id), method: :post %></td>
-      <% else %>
-      <br><%= link_to 'Remove from favorites', unfavourite_listing_path(listing.id), method: :delete %></td>
+      <% if current_user %>
+        <% unless current_user.favourite_listings.exists?(listing.id) %>
+        <br><%= link_to 'Add to favorites', favourite_listing_path(listing.id), method: :post %></td>
+        <% else %>
+        <br><%= link_to 'Remove from favorites', unfavourite_listing_path(listing.id), method: :delete %></td>
+        <% end %>
       <% end %>
     <% end %>
   </div>

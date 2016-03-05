@@ -43,7 +43,7 @@ class UsersController < ApplicationController
     if @user.save
       redirect_back_or_to user_path(@user)
     else
-      render :new
+      render :new, notice: "That didn't work"
     end
   end
 
