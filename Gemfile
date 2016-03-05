@@ -38,6 +38,8 @@ gem 'geocoder'
 gem 'acts-as-taggable-on', '~> 3.4'
 
 gem 'ransack'
+
+gem 'has_secure_token'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
