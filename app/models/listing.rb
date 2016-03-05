@@ -8,10 +8,6 @@ class Listing < ActiveRecord::Base
 
   accepts_nested_attributes_for :images, allow_destroy: true
 
-  def self.search(query)
-    where("LOWER(name) LIKE LOWER(?)", "%#{query}%")
-  end
-
   def display_distance_in_meters(other_listing)
     self.distance_to(other_listing, :km).round(3)
   end
