@@ -11,15 +11,20 @@ Rails.application.routes.draw do
       collection do
         match 'search'=> 'user#search', via: [:get, :post], as: :search
       end
-
   end
+
+
   resources :listings do
     member do
       post 'favourite'
       delete 'unfavourite'
     end
     resources :comments
+    collection do
+      match 'search' => 'listings#search', via: [:get, :post], as: :search
+    end
   end
+
   resources :user_sessions, only: [:new, :create, :destroy]
 
   get 'login' => 'user_sessions#new', as: :login
