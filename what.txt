@@ -1,9 +1,0 @@
-- /encrypting emails in database
-
-- ajax for favourties buttons
-
-- Sylvia's github issues
-- listings near me no longer working
-
-
-
