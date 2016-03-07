@@ -6,11 +6,11 @@
   <% end %>
 <% end %>
 
-<h1>Profile for <%= @user.name %></h1>
+<h1><%= @user.name %></h1>
+<%= link_to "Send me a message", conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: 'post'%><br>
 <div class="info">
-  <%= @user.name %><br>
   <% if current_user && current_user.id == @user.id %>
-    <%= link_to "Edit Profile", edit_user_path(@user) %>
+    <%= link_to "Edit Profile", edit_user_path(@user) %><br>
   <% end %>
 
   <%= link_to image_url @user.avatar.thumb do %>

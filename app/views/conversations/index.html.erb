@@ -14,9 +14,10 @@
 </div>
 </div>
 <div class=”ui segment”>
+
 <h2>Message Someone</h2>
  <div class=”ui list”>
-  <% @users.each do |user| %>
+  <% @users.sort_by {|u| u.name.downcase}.each do |user| %>
    <% if user.id != current_user.id %>
     <div class=”item”>
   <%= user.name %> <%= link_to "‘Message me!’", conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post'%>

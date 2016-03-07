@@ -2,6 +2,8 @@
   <%= link_to 'Show Previous', '?m=all' %>
 <% end %>
 
+<% user = User.find(@conversation.recipient_id) %>
+<h3>Conversation with <%= link_to user.name, user_path(user.id)%></h3>
 <div>
   <% @messages.each do |message| %>
     <% if message.body %>
