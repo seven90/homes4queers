@@ -1,3 +1,13 @@
+class CheckForInvite < ActiveModel::Validator
+  def validate(record)
+    @inviter = User.find_by_token(record.invite_code)
+    if @inviter.nil?
+      record.errors[:invite_code] << "- Must provide a valid invite code!"
+      return false
+    end
+  end
+end
+
 class User < ActiveRecord::Base
   authenticates_with_sorcery!
   has_many :listings, dependent: :destroy
@@ -15,6 +25,7 @@ class User < ActiveRecord::Base
   validates :password, confirmation: true, on: :create
   validates :password_confirmation, presence: true, on: :create
   validates :email, uniqueness: true
+  validates_with CheckForInvite
 
   def has_secure_token(attribute = :token)
     require 'active_support/core_ext/securerandom'

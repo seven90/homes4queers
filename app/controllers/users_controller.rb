@@ -31,15 +31,12 @@ class UsersController < ApplicationController
   end
 
   def create
-    @auth_token = User.find_by token:(params[:token])
-    if @auth_token
-      @user = User.new(user_params)
+    @user = User.new(user_params)
       if @user.save
         redirect_back_or_to user_path(@user)
       else
         render :new
       end
-    end
   end
 
   def update
@@ -78,8 +75,9 @@ class UsersController < ApplicationController
 
   def user_params
     #image is nested in a hash
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :about_me, :avatar, :tag_list)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :about_me, :avatar, :tag_list, :invite_code)
   end
+
 
 
 end
