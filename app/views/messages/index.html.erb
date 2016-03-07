@@ -4,6 +4,18 @@
 
 <% user = User.find(@conversation.recipient_id) %>
 <h3>Conversation with <%= link_to user.name, user_path(user.id)%></h3>
+
+<% unless @conversation.subject != nil %>
+  <%= form_for @conversation do |f| %>
+    <%= f.label :subject %>
+    <%= f.text_field :subject %>
+    <%= f.submit "Add Subject" %>
+  <% end %>
+<% else %>
+  Subject: <%= @conversation.subject %>
+<% end %>
+
+
 <div>
   <% @messages.each do |message| %>
     <% if message.body %>

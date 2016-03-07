@@ -20,8 +20,14 @@ class ConversationsController < ApplicationController
     redirect_to conversation_messages_path(@conversation)
   end
 
+  def update
+    @conversation = Conversation.find(params[:id])
+    if @conversation.update_attributes(conversation_params)
+      redirect_back_or_to conversation_messages_path(@conversation)
+    end
+  end
   private
   def conversation_params
-    params.permit(:sender_id, :recipient_id)
+    params.require(:conversation).permit(:sender_id, :recipient_id, :subject)
   end
 end
