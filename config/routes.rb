@@ -29,4 +29,8 @@ Rails.application.routes.draw do
 
   get 'login' => 'user_sessions#new', as: :login
   post 'logout' => 'user_sessions#destroy', as: :logout
+
+  resources :conversations do
+    resources :messages
+  end
 end
