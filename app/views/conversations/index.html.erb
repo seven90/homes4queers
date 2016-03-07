@@ -1,6 +1,5 @@
-<h1>Mailbox</h1>
  <div class=”item”>
-
+<h2>Conversations</h2>
   <% @conversations.each do |conversation| %>
   <% if conversation.sender_id == current_user.id ||  conversation.recipient_id == current_user.id %>
    <% if conversation.sender_id == current_user.id %>
@@ -15,7 +14,7 @@
 </div>
 </div>
 <div class=”ui segment”>
-<h3>All Users</h3>
+<h2>Message Someone</h2>
  <div class=”ui list”>
   <% @users.each do |user| %>
    <% if user.id != current_user.id %>
