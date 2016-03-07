@@ -2,8 +2,13 @@ class ConversationsController < ApplicationController
   before_action :require_login
 
   def index
-    @users = User.all
     @conversations = Conversation.all
+    @users = if params[:search]
+      User.where("LOWER(name) LIKE LOWER(?)", "%#{params[:search]}%")
+    else
+      User.all
+    end
+
   end
 
   def create

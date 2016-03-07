@@ -1,6 +1,6 @@
  <div class=”item”>
 <h2>Conversations</h2>
-  <% @conversations.each do |conversation| %>
+  <% @conversations.sort_by{|c| [c.created_at, c.updated_at].max}.reverse.each do |conversation| %>
   <% if conversation.sender_id == current_user.id ||  conversation.recipient_id == current_user.id %>
    <% if conversation.sender_id == current_user.id %>
      <% recipient = User.find(conversation.recipient_id) %>
@@ -16,11 +16,16 @@
 <div class=”ui segment”>
 
 <h2>Message Someone</h2>
- <div class=”ui list”>
+<%= form_tag(conversations_path, method: "get") do %>
+  <%= label_tag(:search, "Search for:") %>
+  <%= text_field_tag(:search) %>
+  <%= submit_tag("Search") %>
+
+<% end %> <div class=”ui list”>
   <% @users.sort_by {|u| u.name.downcase}.each do |user| %>
    <% if user.id != current_user.id %>
     <div class=”item”>
   <%= user.name %> <%= link_to "‘Message me!’", conversations_path(sender_id: current_user.id, recipient_id: user.id), method: 'post'%>
+  <% end %>
 </div>
  <% end %>
-<% end %>
