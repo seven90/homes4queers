@@ -25,7 +25,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-
+    require_secure_token(:invite_code)
   end
 
   def show
@@ -84,5 +84,14 @@ class UsersController < ApplicationController
   def user_params
     #image is nested in a hash
     params.require(:user).permit(:name, :email, :password, :password_confirmation, :about_me, :avatar, :tag_list)
+  end
+
+  def require_secure_token(user_token)
+    if
+      User.find_by token:(params[user_token]) && true
+    else
+      flash.now[:alert] = 'Token not found - please message an admin for help'
+      render :new
+    end
   end
 end
