@@ -1,7 +1,23 @@
 
-<%= link_to "Email", "http://google.com", :target => "_blank" %>
-<%= link_to "Facebook", "http://google.com", :target => "_blank" %>
-<%= link_to "Twitter", "http://google.com", :target => "_blank" %>
-<%= link_to "Instagram", "http://google.com", :target => "_blank" %>
-<%= link_to "Personal Website", "http://google.com", :target => "_blank" %>
- :email_link, :facebook, :twitter, :instagram, :website
+<% f.fields_for :external_links do |l| %>
+<div class="field">
+  <%= l.label :email_link %>
+  <%= l.email_field  :email_link %>
+</div>
+<div class="field">
+  <%= l.label :facebook %>
+  <%= l.url_field :facebook %>
+</div>
+<div class="field">
+  <%= l.label :twitter %>
+  <%= l.url_field :twitter %>
+</div>
+<div class="field">
+  <%= l.label :instagram %>
+  <%= l.url_field :instagram %>
+</div>
+<div class="field">
+  <%= l.label :website %>
+  <%= l.url_field :website %>
+</div>
+<% end %>

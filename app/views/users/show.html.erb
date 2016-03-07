@@ -34,7 +34,13 @@
   <% end %>
 </div>
 
-
+<% if @user.external_links == true %>
+<%= link_to "Email", "#{:email_link}", :target => "_blank" %>
+<%= link_to "Facebook", "#{:facebook}", :target => "_blank" %>
+<%= link_to "Twitter", "#{:twitter}", :target => "_blank" %>
+<%= link_to "Instagram", "#{:instagram}", :target => "_blank" %>
+<%= link_to "Personal Website", "#{:website}", :target => "_blank" %>
+<% end %>
 
 <hr>
 <h4>User Comments</h4>

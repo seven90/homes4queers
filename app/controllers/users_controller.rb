@@ -31,6 +31,7 @@ class UsersController < ApplicationController
   end
 
   def create
+    user_params[:invite_code_user_id] = User.find_by_token(params[:invite_code])
     @user = User.new(user_params)
       if @user.save
         redirect_back_or_to user_path(@user)
@@ -71,11 +72,14 @@ class UsersController < ApplicationController
     end
   end
 
+
   private
 
   def user_params
     #image is nested in a hash
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :about_me, :avatar, :tag_list, :invite_code, :invite_code_user_id)
+    params.require(:user).permit(:name, :email, :password,
+    :password_confirmation, :about_me, :avatar, :tag_list, :invite_code,
+    :invite_code_user_id, :external_links => [:email, :facebook, :twitter, :instagram, :website])
   end
 
 
