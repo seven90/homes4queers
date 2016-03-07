@@ -1,5 +1,9 @@
 <%= form_for @user do |f| %>
   <div class="field">
+    <%= f.label :auth_token, "Please enter your invite code" %>
+    <%= f.text_field :auth_token %>
+  </div>
+  <div class="field">
     <%= f.label :email %>
     <%= f.text_field :email %><br>
   </div>

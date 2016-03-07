@@ -12,20 +12,11 @@ class UsersController < ApplicationController
     end
   end
 
-  # def results
-  # @users = User.where("LOWER(name) LIKE LOWER(?)", "%#{params[:search]}%") \
-  #   | User.tagged_with(params[:search])
-  # end
-
-
   def search
     index
     render :index
   end
 
-  # def require_secure_token(user_token)
-  # end
-  # require_secure_token(params[:auth_token])
   def new
     @user = User.new
   end
@@ -40,12 +31,14 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
-
-    if @user.save
-      redirect_back_or_to user_path(@user)
-    else
-      render :new
+    @auth_token = User.find_by token:(params[:token])
+    if @auth_token
+      @user = User.new(user_params)
+      if @user.save
+        redirect_back_or_to user_path(@user)
+      else
+        render :new
+      end
     end
   end
 
