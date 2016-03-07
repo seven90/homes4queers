@@ -23,9 +23,11 @@ class UsersController < ApplicationController
     render :index
   end
 
+  # def require_secure_token(user_token)
+  # end
+  # require_secure_token(params[:auth_token])
   def new
     @user = User.new
-    require_secure_token(:invite_code)
   end
 
   def show
@@ -86,12 +88,5 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, :email, :password, :password_confirmation, :about_me, :avatar, :tag_list)
   end
 
-  def require_secure_token(user_token)
-    if
-      User.find_by token:(params[user_token]) && true
-    else
-      flash.now[:alert] = 'Token not found - please message an admin for help'
-      render :new
-    end
-  end
+
 end

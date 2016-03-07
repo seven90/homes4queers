@@ -22,13 +22,4 @@ class User < ActiveRecord::Base
     before_create { self.send("#{attribute}=", self.class.generate_unique_secure_token) unless self.send("#{attribute}?")}
   end
 
-  def require_secure_token(user_token)
-    if
-      User.find_by token:(params[user_token]) && true
-    else
-      flash.now[:alert] = 'Token not found - please message an admin for help'
-      render :new
-    end
-  end
-
 end
