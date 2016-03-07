@@ -4,6 +4,8 @@ class CheckForInvite < ActiveModel::Validator
     if @inviter.nil?
       record.errors[:invite_code] << "- Must provide a valid invite code!"
       return false
+    else
+       @inviter.id = User.invite_code_user_id
     end
   end
 end
