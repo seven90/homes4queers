@@ -1,0 +1,42 @@
+<% if @over_ten %>
+  <%= link_to 'Show Previous', '?m=all' %>
+<% end %>
+
+<% user = User.find(@conversation.recipient_id) %>
+<h3>Conversation with <%= link_to user.name, user_path(user.id)%></h3>
+
+<% unless @conversation.subject != nil %>
+  <%= form_for @conversation do |f| %>
+    <%= f.label :subject %>
+    <%= f.text_field :subject %>
+    <%= f.submit "Add Subject" %>
+  <% end %>
+<% else %>
+  Subject: <%= @conversation.subject %>
+<% end %>
+
+
+<div>
+  <% @messages.each do |message| %>
+    <% if message.body %>
+      <% user = User.find(message.user_id) %>
+      <div class="content">
+        <strong><%= user.name %></strong>
+        <%= message.message_time %>
+        <div class="body">
+          <%= message.body %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+<%= form_for [@conversation, @message] do |f| %>
+<div class="field">
+  <%= f.text_area :body %>
+</div>
+<%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
+<div class="field">
+  <%= f.submit "Reply" %>
+</div>
+<% end %>

@@ -32,6 +32,10 @@ ActiveRecord::Schema.define(version: 20160308163220) do
     t.integer  "recipient_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+<<<<<<< HEAD
+=======
+    t.string   "subject"
+>>>>>>> master
   end
 
   create_table "favourites", force: :cascade do |t|

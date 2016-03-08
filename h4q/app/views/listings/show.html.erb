@@ -1,13 +1,12 @@
-<div class="nav">
-  <br>
-</div>
-<% unless current_user.favourite_listings.exists?(id: @listing.id) %>
-<%= link_to 'Add to favorites', favourite_listing_path(listing_id: @listing), method: :post %>
-<% else %>
-<%= link_to 'Remove from favorites', unfavourite_listing_path(@listing), method: :delete %>
+<% if current_user %>
+  <% unless current_user.favourite_listings.exists?(id: @listing.id) %>
+  <%= link_to 'Add to favorites', favourite_listing_path(listing_id: @listing), method: :post %>
+  <% else %>
+  <%= link_to 'Remove from favorites', unfavourite_listing_path(@listing), method: :delete %>
+  <% end %>
 <% end %>
 
-<% if @listing.user_id == current_user.id%>
+<% if current_user && @listing.user_id == current_user.id%>
   <%= link_to "Edit", edit_listing_path(@listing) %>
 <% end %>
 <h1><%= @listing.name %></h1>
