@@ -29,7 +29,8 @@
 <%= fields_for :external_links, @user.external_links do |links| %>
 Email : <%= links.email_field :email_link %>
 <% end %>
-
+<%#= fields_for :external_links, @user.external_links do |links| %>
+<%# end %>
   <div class="action">
    <%= f.submit %><br>
   </div>

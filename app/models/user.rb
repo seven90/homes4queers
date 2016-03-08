@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: true
   validates_with CheckForInvite
 
-  # store :external_links, accessors: [:email, :facebook, :twitter, :instagram, :website], coder: JSON
+  # store :external_links, accessors: [:email_link, :facebook, :twitter, :instagram, :website]
 
   def has_secure_token(attribute = :token)
     require 'active_support/core_ext/securerandom'

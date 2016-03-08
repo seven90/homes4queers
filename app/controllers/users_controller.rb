@@ -32,6 +32,8 @@ class UsersController < ApplicationController
 
   def create
       @user = User.new(user_params)
+      @user.external_links = params[:external_links]
+
       if @user.save
         redirect_back_or_to user_path(@user)
       else
