@@ -21,6 +21,7 @@
     <% if message.body %>
       <% user = User.find(message.user_id) %>
       <div class="content">
+        <%= image_tag user.avatar.tiny_thumb, class: 'tiny_thumb' %>
         <strong><%= user.name %></strong>
         <%= message.message_time %>
         <div class="body">

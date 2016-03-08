@@ -10,7 +10,14 @@ class ListingsController < ApplicationController
     elsif params[:latitude] && params[:longitude]
       @listings = Listing.near([params[:latitude], params[:longitude]])
     else
-     @listings = Listing.order("created_at DESC")
+     @listings = Listing.order("created_at DESC").page(params[:page])
+    end
+
+    @listings = Listing.order("created_at DESC").page(params[:page]).per(10)
+
+    respond_to do |format|
+      format.html
+      format.js
     end
   end
 
