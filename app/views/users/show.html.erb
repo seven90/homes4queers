@@ -27,13 +27,6 @@
   <h4>Tags:</h4>
   <%= @user.tag_list %>
 </div>
-<% if @user.external_links %>
-<%= link_to "Email", @user.external_links[:email_link], :target => "_blank" %>
-<%#= link_to "Facebook", "#{:facebook}", :target => "_blank" %>
-<%#= link_to "Twitter", "#{:twitter}", :target => "_blank" %>
-<%#= link_to "Instagram", "#{:instagram}", :target => "_blank" %>
-<%#= link_to "Personal Website", "#{:website}", :target => "_blank" %>
-<% end %>
 
 <hr>
 <div class="user-listings">
@@ -48,8 +41,6 @@
   </div>
   <% end %>
 </div>
-
-
 
 <hr>
 <h4>User Comments</h4>
