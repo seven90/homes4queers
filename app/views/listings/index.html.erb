@@ -23,8 +23,9 @@
   <%= f.submit %>
 <% end %>
 
+<small><%= page_entries_info @listings %></small>
 
- <table class="user_list">
+ <table class="listings_list">
    <th>Sort by:</th>
    <th><%= sort_link @q, :name, 'Name' %></th>
    <th><%= sort_link @q, :price, 'Price' %></th>
@@ -34,3 +35,5 @@
 <div class="listing">
   <%= render @listings %>
 </div>
+
+<%= paginate @listings %>
