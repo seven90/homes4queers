@@ -26,11 +26,19 @@
     <%= f.label :tag_list, 'Add tags, seprated by a comma' %>
     <%= f.text_field :tag_list %>
   </div>
-<%= fields_for :external_links, @user.external_links do |links| %>
-Email : <%= links.email_field :email_link %>
-<% end %>
-<%#= fields_for :external_links, @user.external_links do |links| %>
-<%# end %>
+  <div class="field">
+    <%= f.file_field :avatar %><br>
+  </div>
+  <div class="field">
+    <%= fields_for :external_links, @user.external_links do |links| %>
+      Email : <%= links.email_field :email_link %><br>
+      Facebook : <%= links.url_field :facebook %><br>
+      Twitter : <%= links.url_field :twitter %><br>
+      Instagram : <%= links.url_field :instagram %><br>
+      Website : <%= links.url_field :website %><br>
+    <% end %>
+  </div>
+
   <div class="action">
    <%= f.submit %><br>
   </div>
