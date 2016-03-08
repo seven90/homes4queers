@@ -14,7 +14,6 @@ class User < ActiveRecord::Base
   has_many :favourites, dependent: :destroy
   has_many :favourite_listings, through: :favourites, source: :favourited, source_type: 'Listing'
   has_many :favourite_users, through: :favourites, source: :favourited, source_type: 'User'
-  has_many :external_links
 
   has_many :user_comments, as: :commentable, class_name:"Comment", dependent: :destroy
   has_many :listing_comments, through: :listings, source:"comments", dependent: :destroy
@@ -28,8 +27,7 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: true
   validates_with CheckForInvite
 
-  accepts_nested_attributes_for :external_links
-
+  # store :external_links, accessors: [:email, :facebook, :twitter, :instagram, :website], coder: JSON
 
   def has_secure_token(attribute = :token)
     require 'active_support/core_ext/securerandom'
