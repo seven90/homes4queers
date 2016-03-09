@@ -1,8 +1,8 @@
 <%= form_for @user do |f| %>
 
   <div class="field">
-    <%= f.label :invite_code, "Please enter your invite code" %>
-    <%= f.text_field :invite_code   %>
+    <%= f.label :invite_code, "Please enter your invite code" if @user.new_record?%>
+    <%= f.text_field :invite_code if @user.new_record?%>
   </div>
 
   <div class="field">
