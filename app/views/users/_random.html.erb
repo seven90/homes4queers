@@ -1,0 +1,3 @@
+<% offset = rand(User.count) %>
+<% rand_record = User.offset(offset).first %>
+<%= link_to 'Find me a random profile', user_path(rand_record.id) %><br>
