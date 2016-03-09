@@ -1,1 +1,1 @@
-$('.listing').html("<%= j(render 'listing') %>")
+$('.listing').html("<%= j(render @listings) %>")

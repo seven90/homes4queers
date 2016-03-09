@@ -12,12 +12,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # def results
-  # @users = User.where("LOWER(name) LIKE LOWER(?)", "%#{params[:search]}%") \
-  #   | User.tagged_with(params[:search])
-  # end
-
-
   def search
     index
     render :index
@@ -25,7 +19,6 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-
   end
 
   def show
@@ -38,13 +31,14 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
+      @user = User.new(user_params)
+      @user.external_links = params[:external_links]
 
-    if @user.save
-      redirect_back_or_to user_path(@user)
-    else
-      render :new
-    end
+      if @user.save
+        redirect_back_or_to user_path(@user)
+      else
+        render :new
+      end
   end
 
   def update
@@ -79,10 +73,15 @@ class UsersController < ApplicationController
     end
   end
 
+
   private
 
   def user_params
     #image is nested in a hash
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :about_me, :avatar, :tag_list)
+    params.require(:user).permit(:name, :email, :password,
+    :password_confirmation, :about_me, :avatar, :tag_list, :invite_code)
   end
+
+
+
 end
