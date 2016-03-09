@@ -1,8 +1,10 @@
 <%= form_for @user do |f| %>
+
   <div class="field">
     <%= f.label :invite_code, "Please enter your invite code" %>
-    <%= f.text_field :invite_code %>
+    <%= f.text_field :invite_code   %>
   </div>
+
   <div class="field">
     <%= f.label :email %>
     <%= f.email_field :email %><br>

@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: true
   validates_with CheckForInvite
 
-  def has_secure_token(attribute = :token)
+  def self.has_secure_token(attribute = :token)
     require 'active_support/core_ext/securerandom'
     define_method("regenerate_#{attribute}") { update! attribute => self.class.generate_unique_secure_token }
     before_create { self.send("#{attribute}=", self.class.generate_unique_secure_token) unless self.send("#{attribute}?")}

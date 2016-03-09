@@ -3,22 +3,22 @@ class ListingsController < ApplicationController
   def index
     @q = Listing.ransack(params[:q])
     if params[:q]
-      @listings = @q.result.distinct
+      @listings = @q.result.distinct.page(params[:page]).per(10)
       @q.build_condition if @q.conditions.empty?
       @q.build_sort if @q.sorts.empty?
       # @listings = Listing.near(params[:search])
     elsif params[:latitude] && params[:longitude]
       @listings = Listing.near([params[:latitude], params[:longitude]])
     else
-     @listings = Listing.order("created_at DESC").page(params[:page])
+      @listings = Listing.order("created_at DESC").page(params[:page]).per(10)
+    #  @listings = Listing.order("created_at DESC").page(params[:page])
     end
 
-    @listings = Listing.order("created_at DESC").page(params[:page]).per(10)
 
-    respond_to do |format|
-      format.html
-      format.js
-    end
+    # respond_to do |format|
+    #   format.html
+    #   format.js
+    # end
   end
 
   def search

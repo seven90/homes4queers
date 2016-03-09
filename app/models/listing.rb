@@ -5,7 +5,8 @@ class Listing < ActiveRecord::Base
   has_many :images
   geocoded_by :location
   after_validation :geocode, if: :location_changed?
-
+  validates :price, presence: true
+  validates :location, presence: true
   accepts_nested_attributes_for :images, allow_destroy: true
 
   def display_distance_in_meters(other_listing)
