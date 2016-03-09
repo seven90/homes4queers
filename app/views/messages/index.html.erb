@@ -16,28 +16,31 @@
 <% end %>
 
 
-<div>
-  <% @messages.each do |message| %>
-    <% if message.body %>
-      <% user = User.find(message.user_id) %>
-      <div class="content">
-        <%= image_tag user.avatar.tiny_thumb, class: 'tiny_thumb' %>
-        <strong><%= user.name %></strong>
-        <%= message.message_time %>
-        <div class="body">
-          <%= message.body %>
+<div id="message-box">
+
+  <div id="messages-all">
+    <% @messages.each do |message| %>
+      <% if message.body %>
+        <% user = User.find(message.user_id) %>
+        <div class="content">
+          <%= image_tag user.avatar.tiny_thumb, class: 'tiny_thumb' %>
+          <strong><%= user.name %></strong>
+          <%= message.message_time %>
+          <div class="message-body">
+            <%= message.body %>
+          </div>
         </div>
-      </div>
+      <% end %>
     <% end %>
+  </div>
+
+  <%= form_for [@conversation, @message] do |f| %>
+  <div class="field">
+    <%= f.text_area :body %>
+  </div>
+  <%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
+  <div class="field">
+    <%= f.submit "Reply" %>
+  </div>
   <% end %>
 </div>
-
-<%= form_for [@conversation, @message] do |f| %>
-<div class="field">
-  <%= f.text_area :body %>
-</div>
-<%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
-<div class="field">
-  <%= f.submit "Reply" %>
-</div>
-<% end %>
