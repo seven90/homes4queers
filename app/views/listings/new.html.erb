@@ -1,3 +1,18 @@
 <h1>Add a New Listing</h1>
 
+<% if @listing.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@listing.errors.count, "error")  %>
+      prohibited this user form being saved:
+    </h2>
+    <ul>
+      <%= @listing.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
 <%= render 'listing_form' %>

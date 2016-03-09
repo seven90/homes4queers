@@ -36,4 +36,5 @@ class User < ActiveRecord::Base
   #   before_create { self.send("#{attribute}=", self.class.generate_unique_secure_token) unless self.send("#{attribute}?")}
   # end
 
+
 end

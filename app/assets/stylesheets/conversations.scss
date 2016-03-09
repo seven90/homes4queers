@@ -3,16 +3,14 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 #message-box{
   background-color: rgb(162, 206, 255);
-  max-height: 10em;
+  max-height: 15em;
   width: 15rem;
   padding: 0.5rem;
   overflow-y:scroll;
+  border-radius: 5%;
 
 }
 
 .message-body{
   background-color: white;
-}
-#messages-all{
-
 }

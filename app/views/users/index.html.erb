@@ -1,8 +1,9 @@
 <h1>Everyone</h1>
+<%= render 'random' %><br>
 
   <%= search_form_for @q do |f| %>
-    <%= f.label :name_or_tags_name_cont, "Search by name or tags" %>
-    <%= f.search_field :name_or_tags_name_cont %>
+    <%= f.label :name_or_tags_name_cont, "Search for people by name or tags" %><br>
+    <%= f.search_field :name_or_tags_name_cont %><br><br>
 
     <%= f.submit %>
   <% end %>

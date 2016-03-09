@@ -11,9 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 20160308235136) do
-
+ActiveRecord::Schema.define(version: 20160309010521) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +33,17 @@ ActiveRecord::Schema.define(version: 20160308235136) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "subject"
+  end
+
+  create_table "extended_profile_attributes", force: :cascade do |t|
+    t.string   "email_link"
+    t.string   "facebook_url"
+    t.string   "twitter_url"
+    t.string   "instagram_url"
+    t.string   "website_url"
+    t.integer  "user_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "favourites", force: :cascade do |t|
