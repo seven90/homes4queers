@@ -25,12 +25,6 @@
       <%= f.date_field :rent_date %>
     </div>
     <div class="field">
-      <% f.fields_for :images do |photo| %>
-        <%= render 'image_fields', f: photo %>
-      <% end %>
-        <%= link_to_add_association "Add a Photo", f, :images %>
-    </div>
-    <div class="field">
       <%= f.label :roomates, 'Are you looking for a roomate?' %>
       <%= f.check_box :roomates %>
     <div class="field">
@@ -40,7 +34,12 @@
     <div class="field">
       <%= f.label :sublet, "Are you subletting?" %>
       <%= f.check_box :sublet %>
-
+    </div>
+    <div class="field">
+      <% f.fields_for :images do |photo| %>
+      <%= render 'image_fields', f: photo %>
+      <% end %>
+      <%= link_to_add_association "Add a Photo", f, :images %>
     </div>
     <div class="action">
       <%= f.submit "Submit Listing" %>

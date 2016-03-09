@@ -6,6 +6,12 @@
     <%= link_to 'Remove from favorites', unfavourite_user_path(@user), method: :delete %>
   <% end %>
 <% end %>
+<br>
+<% if current_user.id == @user.id%>
+  <strong>Invite code:</strong> <%= @user.token %>
+<% end %>
+<br>
+
 
 <h1><%= @user.name %></h1>
 <% if current_user %>
