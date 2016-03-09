@@ -8,7 +8,9 @@
 <% end %>
 
 <h1><%= @user.name %></h1>
+<% if current_user %>
 <%= link_to "Send me a message", conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: 'post'%><br>
+<% end %>
 <div class="info">
   <% if current_user && current_user.id == @user.id %>
     <%= link_to "Edit Profile", edit_user_path(@user) %><br>
@@ -23,7 +25,7 @@
   <%= @user.about_me %><br>
 </div>
 <div class="tags">
-  <h4>Identifier tags:</h4>
+  <h4>Tags:</h4>
   <%= @user.tag_list %>
 </div>
 
@@ -40,8 +42,6 @@
   </div>
   <% end %>
 </div>
-
-
 
 <hr>
 <h4>User Comments</h4>
