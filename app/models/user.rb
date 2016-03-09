@@ -18,6 +18,8 @@ class User < ActiveRecord::Base
   has_many :messages, through: :conversations, dependent: :destroy
   has_many :user_comments, as: :commentable, class_name:"Comment", dependent: :destroy
   has_many :listing_comments, through: :listings, source:"comments", dependent: :destroy
+  has_many :extended_profile_attributes, dependent: :destroy
+
   acts_as_ordered_taggable
   has_secure_token
   mount_uploader :avatar, ImageUploader
@@ -28,10 +30,10 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: true
   validates_with CheckForInvite
 
-  def has_secure_token(attribute = :token)
-    require 'active_support/core_ext/securerandom'
-    define_method("regenerate_#{attribute}") { update! attribute => self.class.generate_unique_secure_token }
-    before_create { self.send("#{attribute}=", self.class.generate_unique_secure_token) unless self.send("#{attribute}?")}
-  end
+  # def has_secure_token(attribute = :token)
+  #   require 'active_support/core_ext/securerandom'
+  #   define_method("regenerate_#{attribute}") { update! attribute => self.class.generate_unique_secure_token }
+  #   before_create { self.send("#{attribute}=", self.class.generate_unique_secure_token) unless self.send("#{attribute}?")}
+  # end
 
 end
