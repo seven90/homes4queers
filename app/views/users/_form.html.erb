@@ -1,38 +1,62 @@
-<%= form_for @user do |f| %>
+<% if @user.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@user.errors.count, "error") %>
+      prohibited this user from being saved:
+    </h2>
+    <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 
-  <div class="field">
-    <%= f.label :invite_code, "Please enter your invite code" if @user.new_record?%>
-    <%= f.text_field :invite_code if @user.new_record?%>
-  </div>
+<div id="user-form">
+  <%= form_for @user do |f| %>
 
-  <div class="field">
-    <%= f.label :email %>
-    <%= f.email_field :email %><br>
-  </div>
-  <div class="field">
-    <%= f.label :password %>
-    <%= f.password_field :password %><br>
-  </div>
-  <div class="field">
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %><br>
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %><br>
-  </div>
-  <div class="field">
-    <%= f.label :about_me, 'About Me!' %>
-    <%= f.text_area :about_me %><br>
-  </div>
-  <div class="field">
-    <%= f.label :tag_list, 'Add tags, seprated by a comma' %>
-    <%= f.text_field :tag_list %>
-  </div>
-  <div class="field">
-    <%= f.file_field :avatar %><br>
-  </div>
-  <div class="action">
-   <%= f.submit %><br>
-  </div>
+    <div class="field">
+      <%= f.label :invite_code, "Please enter your invite code" if @user.new_record?%><br>
+      <%= f.text_field :invite_code if @user.new_record?%><br>
+    </div>
+
+    <div class="field">
+      <%= f.label :email %><br>
+      <%= f.email_field :email %><br>
+    </div>
+
+    <div class="field">
+      <%= f.label :password %><br>
+      <%= f.password_field :password %><br>
+    </div>
+
+    <div class="field">
+      <%= f.label :password_confirmation %><br>
+      <%= f.password_field :password_confirmation %><br>
+    </div>
+
+    <div class="field">
+      <%= f.label :name %><br>
+      <%= f.text_field :name %><br>
+    </div>
+
+    <div class="field">
+      <%= f.label :about_me, 'About Me!' %><br>
+      <%= f.text_area :about_me %><br>
+    </div>
+
+    <div class="field">
+      <%= f.label :tag_list, 'Add tags, seprated by a comma' %><br>
+      <%= f.text_field :tag_list %><br>
+    </div>
+
+    <div class="field"><br>
+      <%= f.file_field :avatar %><br>
+    </div>
+
+    <div class="action">
+     <%= f.submit %><br>
+    </div>
 
   <% end %>
+</div>

@@ -1,46 +1,72 @@
+<% if @listing.errors.any? %>
+  <div id="error_explanation">
+    <h2>
+      <%= pluralize(@listing.errors.count, "error")  %>
+      prohibited this user form being saved:
+    </h2>
+    <ul>
+      <%= @listing.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <div id="listing-form">
   <%= form_for @listing do |f| %>
+
     <div class="field">
-      <%= f.label :name, "Title" %>
-      <%= f.text_field :name %>
+      <%= f.label :name, "Title" %><br>
+      <%= f.text_field :name %><br>
     </div>
+
     <div class="field">
-      <%= f.label :price %>
-      <%= f.number_field :price %>
+      <%= f.label :price %><br>
+      <%= f.number_field :price %><br>
     </div>
+
     <div class="field">
-      <%= f.label :description, "Information" %>
-      <%= f.text_area :description %>
+      <%= f.label :description, "Information" %><br>
+      <%= f.text_area :description %><br>
     </div>
+
     <div class="field">
-      <%= f.label :bedrooms, 'How many available bedrooms?'%>
-      <%= f.number_field :bedrooms %>
+      <%= f.label :bedrooms, 'How many available bedrooms?'%><br>
+      <%= f.number_field :bedrooms %><br>
     </div>
+
     <div class="field">
-      <%= f.label :location, "Address (or area)" %>
-      <%= f.text_field :location %>
+      <%= f.label :location, "Address (or area)" %><br>
+      <%= f.text_field :location %><br>
     </div>
+
     <div class="field">
-      <%= f.label :rent_date, "Available From" %>
-      <%= f.date_field :rent_date %>
+      <%= f.label :rent_date, "Available From" %><br>
+      <%= f.date_field :rent_date %><br>
     </div>
+
     <div class="field">
-      <%= f.label :roomates, 'Are you looking for a roomate?' %>
-      <%= f.check_box :roomates %>
-    <div class="field">
-      <%= f.label :basement, 'Is this a basement apartment?' %>
-      <%= f.check_box :basement %>
+      <%= f.label :roomates, 'Are you looking for a roomate?' %><br>
+      <%= f.check_box :roomates %><br>
     </div>
+
     <div class="field">
-      <%= f.label :sublet, "Are you subletting?" %>
-      <%= f.check_box :sublet %>
+      <%= f.label :basement, 'Is this a basement apartment?' %><br>
+      <%= f.check_box :basement %><br>
     </div>
+
+    <div class="field">
+      <%= f.label :sublet, "Are you subletting?" %><br>
+      <%= f.check_box :sublet %><br>
+    </div>
+
     <div class="field">
       <% f.fields_for :images do |photo| %>
       <%= render 'image_fields', f: photo %>
       <% end %>
       <%= link_to_add_association "Add a Photo", f, :images %>
     </div>
+
     <div class="action">
       <%= f.submit "Submit Listing" %>
     </div>
