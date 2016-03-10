@@ -40,8 +40,9 @@
   <%= render @listings %>
 </div>
 
+<!-- grabbing elements for map -->
 <%= javascript_tag do %>
-  window.listings = <%= raw @listings.map {|n| {lat: n.latitude, lng: n.longitude}}.to_json %>;
+  window.nearby = <%= raw @listings.map {|n| {lat: n.latitude, lng: n.longitude, name: n.name}}.to_json %>;
 <% end %>
 
 <%= paginate @listings %>

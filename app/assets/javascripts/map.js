@@ -19,14 +19,26 @@ $(document).on('ready page:load', function(){
     icon: singleIcon
   });
 
-//window.nearby used for show nearby listings and index all listings cause laziness or DRY
+//window.nearby used for show nearby listings and index all listings cause laziness/ DRY
   if (window.nearby) {
-    nearby.forEach(function(coord) {
-      new google.maps.Marker({
-        position: { lat: parseFloat(coord.lat), lng: parseFloat(coord.lng) },
+    nearby.forEach(function(listing) {
+      mapMarker = new google.maps.Marker({
+        position: { lat: parseFloat(listing.lat), lng: parseFloat(listing.lng) },
         map: map,
         animation: google.maps.Animation.DROP,
         icon: manyIcon
+      });
+      var listingInfo =
+        "<div id='listing-info'>"+
+          "<h4>"+ listing.name + "</h4>"+
+        "</div>"
+      var infoWindow = new google.maps.InfoWindow({
+        content: listingInfo
+      });
+      mapMarker.addListener('click',function(){
+        console.log("clicky mappy");
+        console.log(listing.name);
+        infoWindow.open(map, mapMarker);
 
       });
     });
