@@ -2,7 +2,6 @@ class MessagesController < ApplicationController
   before_action do
    @conversation = Conversation.find(params[:conversation_id])
   end
-  layout false
 
   def index
     @messages = @conversation.messages
