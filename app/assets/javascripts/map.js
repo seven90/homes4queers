@@ -19,6 +19,8 @@ $(document).on('ready page:load', function(){
     icon: singleIcon
   });
 
+  var markerBounds = new google.maps.LatLngBounds();
+
 //window.nearby used for show nearby listings and index all listings cause laziness/ DRY
   if (window.nearby) {
     nearby.forEach(function(listing) {
@@ -28,6 +30,7 @@ $(document).on('ready page:load', function(){
         animation: google.maps.Animation.DROP,
         icon: manyIcon
       });
+
       var listingInfo =
         "<div id='listing-info'>"+
           "<h4>"+ listing.name + "</h4>"+
