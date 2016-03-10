@@ -34,14 +34,14 @@
    <th><%= sort_link @q, :name, 'Name' %></th>
    <th><%= sort_link @q, :price, 'Price' %></th>
  </table>
-<div id="map-show" data-latitude='43.7' data-longitude='-79.4' ></div>
+<div id="map-show"  ></div>
 
 <div class="listing">
   <%= render @listings %>
 </div>
 
 <%= javascript_tag do %>
-  window.nearby = <%= raw @listings.map {|n| {lat: n.latitude, lng: n.longitude}}.to_json %>;
+  window.listings = <%= raw @listings.map {|n| {lat: n.latitude, lng: n.longitude}}.to_json %>;
 <% end %>
 
 <%= paginate @listings %>
