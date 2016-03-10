@@ -1,6 +1,3 @@
-<% if @over_ten %>
-  <%= link_to 'Show Previous', '?m=all' %>
-<% end %>
 
 <% user = User.find(@conversation.recipient_id) %>
 <h3>Conversation with <%= link_to user.name, user_path(user.id)%></h3>
@@ -40,7 +37,8 @@
   </div>
   <%= f.text_field :user_id, value: current_user.id, type: "hidden" %>
   <div class="field">
-    <%= f.submit "Reply" %>
+    <%= f.submit "Send" %>
   </div>
   <% end %>
 </div>
+<%= javascript_include_tag 'conversations' %>

@@ -36,7 +36,8 @@ class MessagesController < ApplicationController
    @message = @conversation.messages.new(message_params)
      if @message.save
        MessageMailer.message_notification(notification_mailer).deliver_later
-      redirect_to conversation_messages_path(@conversation)
+      # redirect_to conversation_messages_path(@conversation)
+      render nothing: true
     else
       redirect_back_or_to conversation_messages_path(@conversation), alert: "Say something to send something"
      end

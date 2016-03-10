@@ -29,7 +29,7 @@
 </div>
 <hr>
 <div id="map-show" data-latitude='<%= @listing.latitude %>' data-longitude='<%= @listing.longitude %>'></div>
-  <script>window.nearby = <%=raw @nearby_listings.map {|l| {lat: l.latitude, lng: l.longitude}}.to_json %>;</script>
+
 
   <hr>
 <div class="nearby">
@@ -38,12 +38,15 @@
     <%= link_to listing_path(list) do %>
     <br><strong><%= list.name %></strong>
     <%=  %>
-    <br><%= image_tag list.thumbnail %>
+    <br><%= image_tag list.thumbnail, alt: 'listing thumbnail' %>
     <% end %>
     <br><%= list.display_distance_in_meters(@listing) %> m away
   <% end %>
 </div>
 
+<%= javascript_tag do %>
+window.nearby = <%=raw @nearby_listings.map {|n| {lat: n.latitude, lng: n.longitude}}.to_json %>;
+<% end %>
 <hr>
 <h4>User Comments</h4>
 <%= render 'comments' %>
