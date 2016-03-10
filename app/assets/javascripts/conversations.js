@@ -10,3 +10,6 @@ $(document).on('ready page:load', function(){
 document.getElementById("message_body").focus();
 
 })
+
+
+// $.get('conversations/15/messages', function(data){$('#messages').html(data)})

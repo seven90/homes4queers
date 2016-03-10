@@ -6,7 +6,7 @@ $(document).on('ready page:load', function(){
      initMap = function() {
       var map = new google.maps.Map(canvas[0], {
         center: listingLocation,
-        zoom: 12
+        zoom: 10
       });
 
       // var nearbys = window.nearby
