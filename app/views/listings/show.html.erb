@@ -13,6 +13,7 @@
 
 <div class="info">
   $<%= @listing.price %> per month<br>
+  Available from: <%= @listing.rent_date.to_formatted_s(:long_ordinal) %><br>
   <% @listing.images.each do |p|%>
     <%= image_tag p.photo, alt: "listing picture"%><br>
   <% end %>
@@ -40,12 +41,12 @@
     <%=  %>
     <br><%= image_tag list.thumbnail, alt: 'listing thumbnail' %>
     <% end %>
-    <br><%= list.display_distance_in_meters(@listing) %> m away
+    <br><%= list.display_distance_in_meters(@listing) %> meters away
   <% end %>
 </div>
 
 <%= javascript_tag do %>
-window.nearby = <%=raw @nearby_listings.map {|n| {lat: n.latitude, lng: n.longitude}}.to_json %>;
+window.nearby = <%=raw @nearby_listings.map {|n| {lat: n.latitude, lng: n.longitude, name: n.name, desc: n.description, price: n.price, bedrooms: n.bedrooms, date: n.rent_date, id: n.id}}.to_json %>;
 <% end %>
 <hr>
 <h4>User Comments</h4>
