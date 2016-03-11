@@ -34,6 +34,7 @@ $(document).on('ready page:load', function(){
       var listingInfo =
         "<div id='listing-info'>"+
           "<h4>"+ listing.name + "</h4>"+
+          "<img src='/uploads/image/photo/"+listing.id+"/"+listing.image+"'/>"+
           "<p>" + listing.desc + "</p>"+
           "<p>" +"$" +listing.price + "</p>"+
           "<p>" +"Bedrooms: " + listing.bedrooms + "</p>"+

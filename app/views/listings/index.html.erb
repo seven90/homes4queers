@@ -10,10 +10,6 @@
                             html: { method: :post } do |f| %>
       <%= f.label :name_or_location_cont, "Search Listings" %>
       <%= f.text_field :name_or_location_cont %>
-
-      <%#= button_tag 'advanced_search' %>
-      <#% link_to "Advanced Search", render 'advanced_search' %>
-
       <%= f.submit %>
     <% end %><br>
   </div>
@@ -27,7 +23,7 @@
   <%= render @listings %>
 
 <%= javascript_tag do %>
-  window.nearby = <%= raw @listings.map {|n| {lat: n.latitude, lng: n.longitude, name: n.name, desc: n.description, price: n.price, bedrooms: n.bedrooms, date: n.rent_date, id: n.id}}.to_json %>;
+  window.nearby = <%= raw @listings.map {|n| {lat: n.latitude, lng: n.longitude, name: n.name, desc: n.description, price: n.price, bedrooms: n.bedrooms, date: n.rent_date, image: n.thumbnail, id: n.id}}.to_json %>;
 <% end %>
 
 <%= paginate @listings %>
