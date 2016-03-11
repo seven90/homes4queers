@@ -1,7 +1,5 @@
 <div class="new comment">
-  <% unless can? :manage, @user %>
     <%= render :partial => 'comments/comment_form' %>
-  <% end %>
 </div>
 <hr>
 <% @user.user_comments.each do |p| %>
