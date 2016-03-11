@@ -1,3 +1,5 @@
+<div class="profile">
+
 <h1><%= @user.name %></h1>
 
 <% if can? :manage, @user %>
@@ -27,22 +29,11 @@
   <h4>Tags:</h4>
   <%= @user.tag_list %>
 </div>
-
-<hr>
-<div class="user-listings">
-  <%= @user.name %>'s Listings
-  <% @user.listings.each do |list| %>
-  <div class='single-listing'>
-    <%= link_to listing_path(list) do %>
-      <br><%= list.name %>
-      <br><%= image_tag list.thumbnail %>
-      <br><%= list.location %>
-    <% end %>
-  </div>
-  <% end %>
 </div>
 
 <hr>
+
+<div class="comments">
 <h4>User Comments</h4>
 <%= render 'comments' %>
 
@@ -50,3 +41,19 @@
 <strong>My unique invite code:</strong> <%= @user.token %>
 <%= link_to "Delete Account", @user, method: :delete, data: {confirm: "Are you sure you want to delete your account? This cannot be undone!"} %><br>
 <% end %>
+</div>
+
+<%= @user.name %>'s Listings
+<div class="single-card">
+  <% @user.listings.each do |list| %>
+  <div class='single-listing'>
+    <ul>
+      <%= link_to listing_path(list) do %>
+      <li><br><%= list.name %></li>
+      <li><br><%= image_tag list.thumbnail %></li>
+      <li><br><%= list.location %></li>
+      <% end %>
+    </div>
+  </ul>
+  <% end %>
+</div>

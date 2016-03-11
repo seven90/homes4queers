@@ -7,7 +7,7 @@ class ListingsController < ApplicationController
       @listings = @q.result.distinct.page(params[:page]).per(10)
       @q.build_condition if @q.conditions.empty?
       @q.build_sort if @q.sorts.empty?
-      # @listings = Listing.near(params[:search])
+      # @listings = Listing.near(params[:q])
     elsif params[:latitude] && params[:longitude]
       @listings = Listing.near([params[:latitude], params[:longitude]])
     else

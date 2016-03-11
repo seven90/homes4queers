@@ -3,8 +3,10 @@
     <%= link_to listing_path(listing), data: { no_turbolink: true } do %>
        <li><%= image_tag listing.thumbnail %></li>
        <li><h3> <%= listing.name %></h3></li>
+       <% end %>
       <li>$<%= listing.price %>/month</li>
       <li><%= listing.location %></li>
+      <li>Available from:<br><%= listing.rent_date %></li>
       <br>
       <% unless can? :manage, listing %>
         <% if current_user %>
@@ -15,6 +17,5 @@
           <% end %>
         <% end %>
       <% end %>
-    <% end %>
-  </ul>
+    </ul>
   </div>
