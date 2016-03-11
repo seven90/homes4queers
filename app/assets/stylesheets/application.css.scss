@@ -65,7 +65,6 @@ html {
   line-height: 1.35;
   height: 100%;
   width: 100%;
-
 }
 
 .navcontainer ul {
@@ -79,13 +78,21 @@ display: inline-block;
 float: right;
 }
 
-.navcontainer ul li { display: inline; }
+.navcontainer ul li {
+  display: inline;
+}
 
 .site-header img {
   width: 100%;
 }
 
+.single-card {
+  margin: 0 5%;
+}
+
 .single-card ul {
+  // position:
+  display: inline-grid;
   border-radius: 10px;
   margin: .5rem;
   padding: 1rem;
@@ -104,13 +111,15 @@ float: right;
 
 }
 
+
 div.single-card ul:hover {
+  z-index: 5;
   -webkit-transition: all 0.1s ease-in-out;
   -moz-transition: all 0.1s ease-in-out;
   -o-transition: all 0.1s ease-in-out;
   transition: all 0.1s ease-in-out;
-
-  margin-top: -2.5%;
+  margin-top: -0.5%;
+  // margin-bottom: 2.5%;
 }
 
 a {
@@ -133,13 +142,81 @@ input, select, textarea {
   background-color: white;
 }
 
-
-
 @media (min-width: 700px) {
-
-.site-header {
-  width: 500px;
-  margin: 0 25%;
+  .site-header {
+    width: 500px;
+    margin: 0 25%;
+  }
 }
 
-  }
+@media (max-width: 500px) {
+.single-card ul {
+
+  width: 85%;
+  margin: .5rem 5%;
+}
+}
+
+// .navcontainer input,
+// .navcontainer label {
+//   display: none;
+//   width: 40px;
+//   height: 40px;
+//   color: #fff;
+//   text-align: center;
+//   line-height: 40px;
+//   font-size: 1.6rem;
+//   border-radius: 5px;
+// }
+// .navcontainer label {
+//   position: absolute;
+//   top: 22px;
+//   right: 20px;
+//   background: #000;
+// }
+// .navcontainer label:hover {
+//   cursor: pointer;
+//   transition: background .2s;
+//   background: crimson;
+// }
+// .navcontainer label:before {
+//   font-family: FontAwesome;
+//   font-size: 24px;
+//   content: "\f0c9";
+//   text-align: center;
+// }
+// .navcontainer input[type="checkbox"]:checked + .top-right-menu + label:hover:before {
+//   content: "\f00d";
+// }
+//   @media only screen and (max-width: 768px) {
+//
+//
+//   	  .navcontainer:before, .navcontainer:after {display:none;}
+//
+//   		.navcontainer ul {
+//   				display: block;
+//   				padding: 18px 0 0 0;
+//   		}
+//   		.top-right-menu {
+//   				transition: all .3s;
+//   				position: absolute;
+//   				z-index: 1000;
+//   				top: 0;
+//   				min-height: 100vh;
+//   				left: 100%;
+//   				background: #fff;
+//   		}
+//   		.top-right-menu li {
+//   				flex: none;
+//   			width:100%;
+//   		}
+//   		.navcontainer input[type="checkbox"]:checked + .main-menu {
+//   				transform:translate(-100%);
+//   				min-width: 50%;
+//   		}
+//   		.navcontainer label {
+//   				display: block;
+//   				z-index: 2000;
+//   				transition: .2s;
+//   		}
+//     }
