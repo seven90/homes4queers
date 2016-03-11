@@ -36,12 +36,12 @@
 
 
   <hr>
+
 <div class="nearby">
   <h2>Nearby Listings</h2>
   <% @nearby_listings.each do |list| %>
     <%= link_to listing_path(list) do %>
     <br><strong><%= list.name %></strong>
-    <%=  %>
     <br><%= image_tag list.thumbnail, alt: 'listing thumbnail' %>
     <% end %>
     <br><%= list.display_distance_in_meters(@listing) %> meters away
@@ -51,6 +51,7 @@
 <%= javascript_tag do %>
 window.nearby = <%=raw @nearby_listings.map {|n| {lat: n.latitude, lng: n.longitude, name: n.name, desc: n.description, price: n.price, bedrooms: n.bedrooms, date: n.rent_date, id: n.id}}.to_json %>;
 <% end %>
+
 <hr>
 <h4>User Comments</h4>
 <%= render 'comments' %>
