@@ -20,6 +20,11 @@ class Listing < ActiveRecord::Base
     end
   end
 
+  def to_json
+     super(:only => [:latitutde, :longitude, :description, :bedrooms, :rent_date, :price] , :methods => [:photo_url])
+  end
+
+
   def nearbys_if_geocoded
     if latitude && longitude
       self.nearbys(0.8, unit: :km)

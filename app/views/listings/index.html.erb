@@ -22,8 +22,9 @@
     <small><%= page_entries_info @listings %></small>
   <%= render @listings %>
 
+
 <%= javascript_tag do %>
-  window.nearby = <%= raw @listings.map {|n| {lat: n.latitude, lng: n.longitude, name: n.name, desc: n.description, price: n.price, bedrooms: n.bedrooms, date: n.rent_date, image: n.thumbnail, id: n.id}}.to_json %>;
+window.nearby = <%=raw @listings.map {|n| {lat: n.latitude, lng: n.longitude, name: n.name, desc: n.description, price: n.price, bedrooms: n.bedrooms, photo: n.images.first.photo.thumb.url, date: n.rent_date, id: n.id}}.to_json %>;
 <% end %>
 
 <%= paginate @listings %>
