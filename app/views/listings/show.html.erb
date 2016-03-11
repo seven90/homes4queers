@@ -1,32 +1,35 @@
-<% unless can? :manage, @listing %>
-  <% unless current_user.favourite_listings.exists?(id: @listing.id) %>
-  <%= link_to 'Add to favorites', favourite_listing_path(listing_id: @listing), method: :post %>
-  <% else %>
-  <%= link_to 'Remove from favorites', unfavourite_listing_path(@listing), method: :delete %>
+<div class="profile">
+
+  <% unless can? :manage, @listing %>
+    <% unless current_user.favourite_listings.exists?(id: @listing.id) %>
+    <%= link_to 'Add to favorites', favourite_listing_path(listing_id: @listing), method: :post %>
+    <% else %>
+    <%= link_to 'Remove from favorites', unfavourite_listing_path(@listing), method: :delete %>
+    <% end %>
   <% end %>
-<% end %>
 
-<h1><%= @listing.name %></h1>
-<% if can? :manage, @listing %>
-<%= link_to "Edit", edit_listing_path(@listing) %>
-<% end %>
-
-<div class="info">
-  $<%= @listing.price %> per month<br>
-  Available from: <%= @listing.rent_date.to_formatted_s(:long_ordinal) %><br>
-  <% @listing.images.each do |p|%>
-    <%= image_tag p.photo, alt: "listing picture"%><br>
+  <h1><%= @listing.name %></h1>
+  <% if can? :manage, @listing %>
+  <%= link_to "Edit", edit_listing_path(@listing) %>
   <% end %>
-  <%= pluralize(@listing.bedrooms, "Bedroom") %><br>
-  <%= @listing.location %><br>
-</div>
 
-<div class="description">
-  <%= @listing.description %>
-</div>
+  <div class="info">
+    $<%= @listing.price %> per month<br>
+    Available from: <%= @listing.rent_date.to_formatted_s(:long_ordinal) %><br>
+    <% @listing.images.each do |p|%>
+      <%= image_tag p.photo, alt: "listing picture"%><br>
+    <% end %>
+    <%= pluralize(@listing.bedrooms, "Bedroom") %><br>
+    <%= @listing.location %><br>
+  </div>
 
-<div class="posted_by">
-  This listing was made by <%= link_to @listing.user.name, @listing.user %>
+  <div class="description">
+    <%= @listing.description %>
+  </div>
+
+  <div class="posted_by">
+    This listing was made by <%= link_to @listing.user.name, @listing.user %>
+  </div>
 </div>
 <hr>
 <div id="map-show" data-latitude='<%= @listing.latitude %>' data-longitude='<%= @listing.longitude %>'></div>
