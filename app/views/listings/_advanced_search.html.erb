@@ -1,0 +1,22 @@
+
+  <h4>Advanced Search</h4>
+
+  <%= search_form_for @q, url: search_listings_path,
+                          html: { method: :post } do |f| %>
+  <%= f.label :price_gteq, "Minimum Price" %><br>
+  <%= f.text_field :price_gteq %><br>
+
+  <%= f.label :price_lteq, "Maximum Price" %><br>
+  <%= f.text_field :price_lteq %><br>
+<br>
+  <%= f.label :location_cont, "Address, Neighbourhood or City" %><br>
+  <%= f.text_field :location_cont %><br>
+<br>
+  <%= f.label :bedrooms_gteq, "Minimum Number of bedrooms" %><br>
+  <%= f.text_field :bedrooms_gteq %><br><br>
+
+  <div class="index-cards">
+    <%= sort_link @q, :name, 'Name' %>
+    <%= sort_link @q, :price, 'Price' %>
+
+<% end %>

@@ -10,6 +10,10 @@
                             html: { method: :post } do |f| %>
       <%= f.label :name_or_location_cont, "Search Listings" %>
       <%= f.text_field :name_or_location_cont %>
+
+      <%#= button_tag 'advanced_search' %>
+      <#% link_to "Advanced Search", render 'advanced_search' %>
+
       <%= f.submit %>
     <% end %><br>
   </div>
