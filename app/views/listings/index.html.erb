@@ -1,33 +1,34 @@
-<h1>Listings</h1>
 
-<%= button_tag 'Listings Near Me', id: 'search-nearby' %><br>
 
-<%= search_form_for @q, url: search_listings_path,
-                        html: { method: :post } do |f| %>
-  <%= f.label :name_or_location_cont, "Search Listings" %>
-  <%= f.text_field :name_or_location_cont %>
-  <%= f.submit %>
-<% end %>
+  <div class="search-listings">
+    <h1>Listings</h1>
+
+    <%= button_tag 'Listings Near Me', id: 'search-nearby' %>
+  <br>
+  <br>
+    <%= search_form_for @q, url: search_listings_path,
+                            html: { method: :post } do |f| %>
+      <%= f.label :name_or_location_cont, "Search Listings" %>
+      <%= f.text_field :name_or_location_cont %>
+      <%= f.submit %>
+    <% end %><br>
+  </div>
+
+<div id="map-show" data-latitude='43.7' data-longitude='-79.4' ></div>
 <!--put in search submit here for simple search -->
 
 <!-- nest advanced search -->
 
 
-<small><%= page_entries_info @listings %></small>
 
- <table class="listings_list">
-   <th>Sort by:</th>
-   <th><%= sort_link @q, :name, 'Name' %></th>
-   <th><%= sort_link @q, :price, 'Price' %></th>
- </table>
-<div id="map-show" data-latitude='43.7' data-longitude='-79.4' ></div>
+  <div class="index-cards">
 
-<div class="listing">
+    <small><%= page_entries_info @listings %></small>
   <%= render @listings %>
-</div>
 
 <%= javascript_tag do %>
   window.nearby = <%= raw @listings.map {|n| {lat: n.latitude, lng: n.longitude}}.to_json %>;
 <% end %>
 
 <%= paginate @listings %>
+</div>

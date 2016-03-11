@@ -57,7 +57,7 @@
 // }
 
 html {
-  background-color: rgb(237, 223, 204);
+  background-color: rgb(250, 240, 209);
   color: rgb(141, 87, 148);
   box-sizing: border-box;
   font-family: 'Cabin', sans-serif;
@@ -66,6 +66,7 @@ html {
   height: 100%;
   width: 100%;
 }
+
 
 .navcontainer ul {
 margin: 0;
@@ -111,8 +112,17 @@ float: right;
 
 }
 
+.index-cards {
+  margin: 0 5%;
+  width: 90%;
+  text-align: center;
+}
 
-div.single-card ul:hover {
+div.search-listings {
+  text-align: center;
+}
+
+div.single-card ul li:hover {
   z-index: 5;
   -webkit-transition: all 0.1s ease-in-out;
   -moz-transition: all 0.1s ease-in-out;
@@ -132,10 +142,15 @@ h1 {
   font-size: 2.5rem;
   // font-family: lobster_tworegular, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+//
+// div.search-listings{
+//   float: right;
+// }
 
-#map-show{
-  height: 300px;
-  width: 300px;
+#map-show {
+  height: 250px;
+  width: 90%;
+  margin: 0 5%;
 }
 
 input, select, textarea {
@@ -149,7 +164,7 @@ input, select, textarea {
   }
 }
 
-@media (max-width: 500px) {
+@media only screen and (max-width: 500px) {
 .single-card ul {
 
   width: 85%;
