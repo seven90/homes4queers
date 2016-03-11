@@ -65,6 +65,7 @@ html {
   line-height: 1.35;
   height: 100%;
   width: 100%;
+
 }
 
 .navcontainer ul {
@@ -100,14 +101,21 @@ float: right;
 
 .single-card li {
   margin: 5%;
+
 }
 
-div.single-card ul li.favourite-link {
-  color: yellow;
+div.single-card ul:hover {
+  -webkit-transition: all 0.1s ease-in-out;
+  -moz-transition: all 0.1s ease-in-out;
+  -o-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+
+  margin-top: -2.5%;
 }
 
 a {
   color: rgba(1,84,90,1);
+    text-decoration: none;
 }
 
 h1 {
@@ -124,28 +132,7 @@ h1 {
 input, select, textarea {
   background-color: white;
 }
-div.single-card li img {
-}
 
-div.single-card ul li img:hover {
-  -webkit-transition: all 0.1s ease-in-out;
-  -moz-transition: all 0.1s ease-in-out;
-  -o-transition: all 0.1s ease-in-out;
-  transition: all 0.1s ease-in-out;
-  // z-index: 5;
-	// width: -1rem;
-	// height: -1rem;
-  position:inherit;
-	margin-top: -5%;
-  // width: 101%;
-	// margin-left: -5%;
-  // margin-right: -5%;
-  // margin-bottom: -5%;
-	// top: 65%;
-	// left: 65%;
-  // right: 65%;
-  // bottom: 65%;
-}
 
 
 @media (min-width: 700px) {

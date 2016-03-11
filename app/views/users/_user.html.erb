@@ -1,5 +1,5 @@
 <div class='single-card'>
-  <% if user.
+    <ul>
       <%= link_to user_path(user) do %>
      <li><%= image_tag user.avatar.thumb %></li>
       <li><%=user.name%></li>
@@ -16,4 +16,5 @@
            <% end %>
          <% end %>
          <% end %>
+      </ul>
   </div>

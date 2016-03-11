@@ -3,7 +3,7 @@
     <%= link_to listing_path(listing), data: { no_turbolink: true } do %>
        <li><%= image_tag listing.thumbnail %></li>
        <li><h3> <%= listing.name %></h3></li>
-      <li>$<%= listing.price %></li>
+      <li>$<%= listing.price %>/month</li>
       <li><%= listing.location %></li>
       <br>
       <% unless can? :manage, listing %>
