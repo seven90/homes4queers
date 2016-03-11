@@ -17,11 +17,11 @@
       <li><%= link_to 'Logout', :logout, method: :post %></li>
     </ul>
     <ul class="top-right-menu">
-      <li><%= link_to 'Inbox', conversations_path %>
-        <li><%= link_to 'My Favourites', user_favourites_path(current_user) %></li>
+        <li><%= link_to 'Users', users_path %></li>
         <li><%= link_to 'Listings', listings_path %></li>
         <li><%= link_to 'Add a listing', new_listing_path  %></li>
-        <li><%= link_to 'Users', users_path %></li>
+        <li><%= link_to 'My Favourites', user_favourites_path(current_user) %></li>
+        <li><%= link_to 'Inbox', conversations_path %>
       </ul>
       <% else %>
       <ul class="top-right-menu">
@@ -40,16 +40,6 @@
    <p id="notice"><%= flash[:notice] %></p>
    <p id="alert"><%= flash[:alert] %></p>
  </div>
-<<<<<<< HEAD
-
-=======
-<% if current_user %>
- <div class="nav">
-   <%= link_to 'Home', :root , data: { no_turbolink: true}%>
-   <%= link_to 'Users', users_path %>
- </div>
-<% end %>
->>>>>>> 5be4c8e227648ef3055dbe26f91672eea7092b97
 
 <%= yield %>
 
