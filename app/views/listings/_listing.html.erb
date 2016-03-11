@@ -1,17 +1,20 @@
-  <div class='single-listing'>
+  <div class='single-card'>
+    <ul>
     <%= link_to listing_path(listing), data: { no_turbolink: true } do %>
-      <%= listing.name %>
-      <br><%= image_tag listing.thumbnail %>
-      <br>$<%= listing.price %>
-      <br><%= listing.location %>
+       <li><%= image_tag listing.thumbnail %></li>
+       <li><h3> <%= listing.name %></h3></li>
+      <li>$<%= listing.price %>/month</li>
+      <li><%= listing.location %></li>
+      <br>
       <% unless can? :manage, listing %>
         <% if current_user %>
           <% unless current_user.favourite_listings.exists?(listing.id) %>
-            <br><%= link_to 'Add to favorites', favourite_listing_path(listing.id), method: :post %></td>
+            <li class="favourite-link"><%= link_to 'Add to favourites', favourite_listing_path(listing.id), method: :post %></li>
           <% else %>
-            <br><%= link_to 'Remove from favorites', unfavourite_listing_path(listing.id), method: :delete %></td>
+            <li class="unfavourite-link"><%= link_to 'Remove from favourites', unfavourite_listing_path(listing.id), method: :delete %></li>
           <% end %>
         <% end %>
       <% end %>
     <% end %>
+  </ul>
   </div>
