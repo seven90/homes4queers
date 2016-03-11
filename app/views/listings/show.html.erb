@@ -29,7 +29,9 @@
 </div>
 <hr>
 <div id="map-show" data-latitude='<%= @listing.latitude %>' data-longitude='<%= @listing.longitude %>'></div>
-
+<%= javascript_tag do %>
+ something = 'asdf'
+<% end %>
 
   <hr>
 <div class="nearby">
@@ -45,7 +47,7 @@
 </div>
 
 <%= javascript_tag do %>
-window.nearby = <%=raw @nearby_listings.map {|n| {lat: n.latitude, lng: n.longitude}}.to_json %>;
+window.nearby = <%=raw @nearby_listings.map {|n| {lat: n.latitude, lng: n.longitude, name: n.name, desc: n.description, price: n.price, bedrooms: n.bedrooms, date: n.rent_date, id: n.id}}.to_json %>;
 <% end %>
 <hr>
 <h4>User Comments</h4>

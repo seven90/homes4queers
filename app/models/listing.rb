@@ -21,7 +21,7 @@ class Listing < ActiveRecord::Base
 
   def nearbys_if_geocoded
     if latitude && longitude
-      self.nearbys(0.5, unit: :km)
+      self.nearbys(1.5, unit: :km)
     else
       []
     end
