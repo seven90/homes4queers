@@ -1,18 +1,18 @@
 <div class='single-user'>
-   <tr class="user-row">
-     <td><%= link_to user_path(user) do %>
-       <%= image_tag user.avatar.thumb %>
-       <td><%=user.name%></td>
-       <% end %></td>
-       <td><%= user.tag_list %></td>
+      <%= link_to user_path(user) do %>
+     <li><%= image_tag user.avatar.thumb %></li>
+      <li><%=user.name%></li>
+       <% end %>
+       <div class="tag-list">
+         <%= user.tag_list %>
+       </div>
         <% if current_user %>
          <% unless can? :manage, user %>
            <% unless current_user.favourite_users.exists?(user.id) %>
-             <td><%= link_to 'Add to favorites', favourite_user_path(user.id), method: :post %></td>
+            <li><%= link_to 'Add to favorites', favourite_user_path(user.id), method: :post %></li>
            <% else %>
-             <td><%= link_to 'Remove from favorites', unfavourite_user_path(user.id), method: :delete %></td>
+             <li><%= link_to 'Remove from favorites', unfavourite_user_path(user.id), method: :delete %></li>
            <% end %>
          <% end %>
-  <% end %>
-   </tr>
- </div>
+         <% end %>
+  </div>
