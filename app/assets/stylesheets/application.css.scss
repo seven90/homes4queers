@@ -84,23 +84,26 @@ float: right;
   width: 100%;
 }
 
-.single-user {
+.single-card ul {
   border-radius: 10px;
   margin: .5rem;
   padding: 1rem;
   border: 5px;
   background-color: white;
-  height: 200px;
+  height: 250px;
   width: 150px;
   float: left;
   list-style-type: none;
   text-align: center;
-
+  overflow-y: auto;
 }
 
-.single-user li {
+.single-card li {
   margin: 5%;
+}
 
+div.single-card ul li.favourite-link {
+  color: yellow;
 }
 
 a {
@@ -121,6 +124,30 @@ h1 {
 input, select, textarea {
   background-color: white;
 }
+div.single-card li img {
+}
+
+div.single-card ul li img:hover {
+  -webkit-transition: all 0.1s ease-in-out;
+  -moz-transition: all 0.1s ease-in-out;
+  -o-transition: all 0.1s ease-in-out;
+  transition: all 0.1s ease-in-out;
+  // z-index: 5;
+	// width: -1rem;
+	// height: -1rem;
+  position:inherit;
+	margin-top: -5%;
+  // width: 101%;
+	// margin-left: -5%;
+  // margin-right: -5%;
+  // margin-bottom: -5%;
+	// top: 65%;
+	// left: 65%;
+  // right: 65%;
+  // bottom: 65%;
+}
+
+
 @media (min-width: 700px) {
 
 .site-header {
