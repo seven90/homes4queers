@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160307213603) do
+ActiveRecord::Schema.define(version: 20160310003258) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,17 @@ ActiveRecord::Schema.define(version: 20160307213603) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "subject"
+  end
+
+  create_table "extended_profile_attributes", force: :cascade do |t|
+    t.string   "email_link"
+    t.string   "facebook_url"
+    t.string   "twitter_url"
+    t.string   "instagram_url"
+    t.string   "website_url"
+    t.integer  "user_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "favourites", force: :cascade do |t|
@@ -107,7 +118,7 @@ ActiveRecord::Schema.define(version: 20160307213603) do
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.text     "about_me"
-    t.string   "email",                                    null: false
+    t.string   "email",                                            null: false
     t.string   "crypted_password"
     t.string   "salt"
     t.datetime "created_at"
@@ -120,6 +131,7 @@ ActiveRecord::Schema.define(version: 20160307213603) do
     t.string   "unlock_token"
     t.string   "token"
     t.string   "invite_code"
+    t.string   "role",                         default: "default"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

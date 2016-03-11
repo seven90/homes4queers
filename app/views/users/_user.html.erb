@@ -5,12 +5,14 @@
        <td><%=user.name%></td>
        <% end %></td>
        <td><%= user.tag_list %></td>
-       <% if current_user %>
-         <% unless current_user.favourite_users.exists?(user.id) %>
-         <td><%= link_to 'Add to favorites', favourite_user_path(user.id), method: :post %></td>
-         <% else %>
-         <td><%= link_to 'Remove from favorites', unfavourite_user_path(user.id), method: :delete %></td>
+        <% if current_user %>
+         <% unless can? :manage, user %>
+           <% unless current_user.favourite_users.exists?(user.id) %>
+             <td><%= link_to 'Add to favorites', favourite_user_path(user.id), method: :post %></td>
+           <% else %>
+             <td><%= link_to 'Remove from favorites', unfavourite_user_path(user.id), method: :delete %></td>
+           <% end %>
          <% end %>
-       <% end %>
+  <% end %>
    </tr>
  </div>

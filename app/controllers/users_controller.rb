@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_login, only: [:edit, :update, :destroy]
+  before_action :require_login, only: [:index, :edit, :update, :destroy]
 
   def index
     @q = User.ransack(params[:q])

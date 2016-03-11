@@ -1,4 +1,4 @@
-<% if current_user %>
+<% unless can? :manage, @listing %>
   <% unless current_user.favourite_listings.exists?(id: @listing.id) %>
   <%= link_to 'Add to favorites', favourite_listing_path(listing_id: @listing), method: :post %>
   <% else %>
@@ -6,10 +6,10 @@
   <% end %>
 <% end %>
 
-<% if current_user && @listing.user_id == current_user.id%>
-  <%= link_to "Edit", edit_listing_path(@listing) %>
-<% end %>
 <h1><%= @listing.name %></h1>
+<% if can? :manage, @listing %>
+<%= link_to "Edit", edit_listing_path(@listing) %>
+<% end %>
 
 <div class="info">
   $<%= @listing.price %> per month<br>

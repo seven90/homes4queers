@@ -1,27 +1,20 @@
+<h1><%= @user.name %></h1>
 
-<% if current_user %>
+<% if can? :manage, @user %>
+  <%= link_to "Edit My Profile", edit_user_path(@user) %>
+<% end %>
+
+<% unless can? :manage, @user %>
   <% unless current_user.favourite_users.exists?(id: @user.id) %>
     <%= link_to 'Add to favorites', favourite_user_path(user_id: @user), method: :post %>
   <% else %>
     <%= link_to 'Remove from favorites', unfavourite_user_path(@user), method: :delete %>
-  <% end %>
-<% end %>
-<br>
-<% if current_user.id == @user.id%>
-  <strong>Invite code:</strong> <%= @user.token %>
-<% end %>
-<br>
+  <% end %><br>
 
-
-<h1><%= @user.name %></h1>
-<% if current_user %>
-<%= link_to "Send me a message", conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: 'post'%><br>
+  <%= link_to "Send me a message", conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: 'post'%><br>
 <% end %>
+
 <div class="info">
-  <% if current_user && current_user.id == @user.id %>
-    <%= link_to "Edit Profile", edit_user_path(@user) %><br>
-  <% end %>
-
   <%= link_to image_url @user.avatar do %>
   <%= image_tag @user.avatar.thumb, class:"profile_pic", alt:"Profile picture thumbnail" %><br>
   <% end %>
@@ -52,3 +45,8 @@
 <hr>
 <h4>User Comments</h4>
 <%= render 'comments' %>
+
+<% if can? :manage, @user %>
+<strong>My unique invite code:</strong> <%= @user.token %>
+<%= link_to "Delete Account", @user, method: :delete, data: {confirm: "Are you sure you want to delete your account? This cannot be undone!"} %><br>
+<% end %>
