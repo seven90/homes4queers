@@ -14,7 +14,7 @@
     <% end %><br>
   </div>
 
-<div id="map-show" data-latitude='43.7' data-longitude='-79.4' ></div>
+<div id="map-index" data-latitude='43.7' data-longitude='-79.4' ></div>
 
 
   <div class="index-cards">
@@ -23,7 +23,7 @@
   <%= render @listings %>
 
 <%= javascript_tag do %>
-  window.nearby = <%= raw @listings.map {|n| {lat: n.latitude, lng: n.longitude}}.to_json %>;
+  window.nearby = <%= raw @listings.map {|n| {lat: n.latitude, lng: n.longitude, name: n.name, desc: n.description, price: n.price, bedrooms: n.bedrooms, date: n.rent_date, id: n.id}}.to_json %>;
 <% end %>
 
 <%= paginate @listings %>
