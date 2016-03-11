@@ -26,7 +26,7 @@
    <p id="alert"><%= flash[:alert] %></p>
  </div>
  <div class="nav">
-   <%= link_to 'Home', :root %>
+   <%= link_to 'Home', :root , data: { no_turbolink: true}%>
    <%= link_to 'Users', users_path %>
  </div>
 

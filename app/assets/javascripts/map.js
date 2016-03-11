@@ -36,8 +36,8 @@ $(document).on('ready page:load', function(){
           "<h4>"+ listing.name + "</h4>"+
           "<p>" + listing.desc + "</p>"+
           "<p>" +"$" +listing.price + "</p>"+
-          "<p>" +"Bedrooms:"+listing.bedrooms + "</p>"+
-          "<p>" + listing.date + "</p>"+
+          "<p>" +"Bedrooms: " + listing.bedrooms + "</p>"+
+          "<p>" + "Date Available: " + listing.date + "</p>"+
           "<a href=/listings/" + listing.id + ">" + 'Go!' +"</a>"+
         "</div>"
       var infoWindow = new google.maps.InfoWindow({

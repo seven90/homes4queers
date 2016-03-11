@@ -32,3 +32,7 @@ a {
 input, select, textarea {
   background-color: rgb(98, 0, 62);
 }
+
+#listing-info{
+  color: rgb(55, 4, 39);
+}
