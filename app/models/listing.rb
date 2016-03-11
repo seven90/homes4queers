@@ -7,6 +7,7 @@ class Listing < ActiveRecord::Base
   after_validation :geocode, if: :location_changed?
   validates :price, presence: true
   validates :location, presence: true
+  validates :rent_date, presence: true
   accepts_nested_attributes_for :images, allow_destroy: true
 
   def display_distance_in_meters(other_listing)
