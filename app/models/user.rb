@@ -10,6 +10,14 @@
 
 class User < ActiveRecord::Base
   authenticates_with_sorcery!
+  authenticates_with_sorcery! do |config|
+    config.authentications_class = Authentication
+  end
+  attr_accessor :email, :password, :password_confirmation, :authentications_attributes
+
+  has_many :authentications, :dependent => :destroy
+  accepts_nested_attributes_for :authentications
+
   has_many :listings, dependent: :destroy
   has_many :favourites, dependent: :destroy
   has_many :favourite_listings, through: :favourites, source: :favourited, source_type: 'Listing'
@@ -21,15 +29,17 @@ class User < ActiveRecord::Base
   has_many :extended_profile_attributes, dependent: :destroy
 
   acts_as_ordered_taggable
+
   # has_secure_token
+
   mount_uploader :avatar, ImageUploader
 
   validates :password, length: { minimum: 6}, on: :create
   validates :password, confirmation: true, on: :create
   validates :password_confirmation, presence: true, on: :create
   validates :email, uniqueness: true
-  # validates_with CheckForInvite
 
+  # validates_with CheckForInvite
 
   Roles = [:admin, :default]
 

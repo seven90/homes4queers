@@ -211,7 +211,6 @@ DEPENDENCIES
   cancancan
   carrierwave
   cocoon
-  coffee-rails (~> 4.1.0)
   figaro
   geocoder
   jbuilder (~> 2.0)

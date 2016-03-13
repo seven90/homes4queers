@@ -1,54 +1,49 @@
+<h1>Listings</h1>
+<%# link_to 'Login with Facebook', auth_at_provider_path(:provider => :facebook) %>
 
+<%= button_tag 'Listings Near Me', id: 'search-nearby' %>
 
-  <div class="search-listings">
-    <h1>Listings</h1>
+<%= search_form_for @q, url: search_listings_path,
+                        html: { method: :post } do |f| %><br>
+  <%= f.label :name_cont, "Search Listings" %><br>
+  <%= f.text_field :name_cont, placeholder: 'Ask me Anything'%><br>
+<!--put in search submit here for simple search -->
 
-    <%= button_tag 'Listings Near Me', id: 'search-nearby' %>
-  <br>
-  <br>
-    <%= search_form_for @q, url: search_listings_path,
-                            html: { method: :post } do |f| %>
-      <%= f.label :name_or_location_cont, "Search Listings" %>
-      <%= f.text_field :name_or_location_cont %>
-<<<<<<< HEAD
-=======
-      <%= f.submit %>
-      <% end %>
-      <%#= button_tag 'advanced_search' %>
-      <%# link_to "Advanced Search", render 'advanced_search' %>
-      <h4>Advanced Search</h4>
+<!-- nest advanced search -->
 
-      <%= search_form_for @q, url: search_listings_path,
-                              html: { method: :post } do |f| %>
-      <%= f.label :price_gteq, "Minimum Price" %>
-      <%= f.text_field :price_gteq %>
+  <h4>Advanced Search</h4>
 
-      <%= f.label :price_lteq, "Maximum Price" %>
-      <%= f.text_field :price_lteq %>
-    <br>
-      <%= f.label :location_cont, "Address, Neighbourhood or City" %>
-      <%= f.text_field :location_cont %>
+  <%= f.label :price_gteq, "Minimum Price" %><br>
+  <%= f.number_field :price_gteq , placeholder: '0'%><br>
 
-      <%= f.label :bedrooms_gteq, "Minimum Number of bedrooms" %>
-      <%= f.text_field :bedrooms_gteq %>
+  <%= f.label :price_lteq, "Maximum Price" %><br>
+  <%= f.number_field :price_lteq, placeholder: '0' %><br>
+<br>
+  <%= f.label :location_cont, "Address, Neighbourhood or City" %><br>
+  <%= f.text_field :location_cont, placeholder: '123 Something Ave, Toronto' %><br>
+<br>
+  <%= f.label :bedrooms_gteq, "Minimum Number of bedrooms" %><br>
+  <%= f.number_field :bedrooms_gteq, placeholder: '1' %><br><br>
 
+  <%= f.submit %>
+<% end %>
 
->>>>>>> 50a0dae85067455bb1b4dd0a0fb0c294fcbb534c
-      <%= f.submit %>
-    <% end %>
-  </div><br>
+<small><%= page_entries_info @listings %></small>
 
-<div id="map-index" data-latitude='43.7' data-longitude='-79.4' ></div>
+ <table class="listings_list">
+   <th>Sort by:</th>
+   <th><%= sort_link @q, :name, 'Name' %></th>
+   <th><%= sort_link @q, :price, 'Price' %></th>
+ </table>
+<div id="map-index" ></div>
 
-  <div class="index-cards">
-
-    <small><%= page_entries_info @listings %></small>
+<div class="listing">
   <%= render @listings %>
+</div>
 
-
+<!-- grabbing elements for map -->
 <%= javascript_tag do %>
-window.nearby = <%=raw @listings.map {|n| {lat: n.latitude, lng: n.longitude, name: n.name, desc: n.description, price: n.price, bedrooms: n.bedrooms, photo: n.images.first.photo.thumb.url, date: n.rent_date, id: n.id}}.to_json %>;
+  window.nearby = <%= raw @listings.map {|n| {lat: n.latitude, lng: n.longitude, name: n.name, desc: n.description, price: n.price, bedrooms: n.bedrooms, date: n.rent_date, id: n.id }}.to_json %>;
 <% end %>
 
 <%= paginate @listings %>
-</div>
