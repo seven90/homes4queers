@@ -9,7 +9,7 @@
     <%= search_form_for @q, url: search_listings_path,
                             html: { method: :post } do |f| %>
       <%= f.label :name_or_location_cont, "Search Listings" %>
-      <%= f.text_field :name_or_location_cont %>
+      <%= f.text_field :name_or_location_cont, placeholder:"boobs" %>
 
       <%= f.submit %>
       <% end %>
@@ -35,6 +35,7 @@
       <%= f.submit %>
     <% end %>
   </div><br>
+
 
 <div id="map-index" data-latitude='43.7' data-longitude='-79.4' ></div>
 
