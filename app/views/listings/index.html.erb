@@ -10,6 +10,8 @@
                             html: { method: :post } do |f| %>
       <%= f.label :name_or_location_cont, "Search Listings" %>
       <%= f.text_field :name_or_location_cont %>
+<<<<<<< HEAD
+=======
       <%= f.submit %>
       <% end %>
       <%#= button_tag 'advanced_search' %>
@@ -31,6 +33,7 @@
       <%= f.text_field :bedrooms_gteq %>
 
 
+>>>>>>> 50a0dae85067455bb1b4dd0a0fb0c294fcbb534c
       <%= f.submit %>
     <% end %>
   </div><br>
@@ -42,8 +45,9 @@
     <small><%= page_entries_info @listings %></small>
   <%= render @listings %>
 
+
 <%= javascript_tag do %>
-  window.nearby = <%= raw @listings.map {|n| {lat: n.latitude, lng: n.longitude, name: n.name, desc: n.description, price: n.price, bedrooms: n.bedrooms, date: n.rent_date, id: n.id}}.to_json %>;
+window.nearby = <%=raw @listings.map {|n| {lat: n.latitude, lng: n.longitude, name: n.name, desc: n.description, price: n.price, bedrooms: n.bedrooms, photo: n.images.first.photo.thumb.url, date: n.rent_date, id: n.id}}.to_json %>;
 <% end %>
 
 <%= paginate @listings %>
